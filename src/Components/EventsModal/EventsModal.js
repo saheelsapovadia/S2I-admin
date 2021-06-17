@@ -8,7 +8,7 @@ import zoom from './zoom.png';
 // import { IoIosArrowBack } from 'react-icons/io';
 // import { IoCalendarOutline } from 'react-icons/io5';
 // import { FiMonitor } from 'react-icons/fi';
-// import { GiThreeFriends } from 'react-icons/gi';
+import { GiThreeFriends } from 'react-icons/gi';
 import { HiDuplicate } from 'react-icons/hi';
 export const Background = styled.div`
   width: 100%;
@@ -242,7 +242,7 @@ const EventsModal = ({ showModal, setShowModal, scrollRemove }) => {
                   <div className='event-card' onClick={onFormClick}>
                     <div className='card-img'>
                       {/* <img src={calender} /> */}
-                      {/* <MdLaptopMac className='event-icon' /> */}
+                      <MdLaptopMac className='event-icon' />
                     </div>
                     <div className='card-content'>
                       <div
@@ -265,7 +265,7 @@ const EventsModal = ({ showModal, setShowModal, scrollRemove }) => {
                   <div className='event-card' style={{ marginTop: '14px' }}>
                     <div className='card-img'>
                       {/* <img src={calender} /> */}
-                      {/* <GiThreeFriends className='event-icon' /> */}
+                      <GiThreeFriends className='event-icon' />
                     </div>
                     <div className='card-content'>
                       <p className='card-title'>New In-person event</p>
