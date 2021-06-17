@@ -5,10 +5,10 @@ import '../Modal/Modal.css';
 import './EventsModal.css';
 
 // import zoom from './zoom.png';
-import { IoIosArrowBack } from 'react-icons/io';
-import { IoCalendarOutline } from 'react-icons/io5';
-import { FiMonitor } from 'react-icons/fi';
-import { GiThreeFriends } from 'react-icons/gi';
+// import { IoIosArrowBack } from 'react-icons/io';
+// import { IoCalendarOutline } from 'react-icons/io5';
+// import { FiMonitor } from 'react-icons/fi';
+// import { GiThreeFriends } from 'react-icons/gi';
 import { HiDuplicate } from 'react-icons/hi';
 export const Background = styled.div`
   width: 100%;
