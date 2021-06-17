@@ -223,10 +223,10 @@ const EventsModal = ({ showModal, setShowModal, scrollRemove }) => {
                   <div className='event-card'>
                     <div className='card-img'>
                       {/* <img src={calender} /> */}
-                      <HiDuplicate
+                      {/* <HiDuplicate
                         className='event-icon rev'
                         style={{ color: 'orange' }}
-                      />
+                      /> */}
                     </div>
                     <div className='card-content'>
                       <p className='card-title'>Duplicate event</p>
@@ -242,7 +242,7 @@ const EventsModal = ({ showModal, setShowModal, scrollRemove }) => {
                   <div className='event-card' onClick={onFormClick}>
                     <div className='card-img'>
                       {/* <img src={calender} /> */}
-                      <MdLaptopMac className='event-icon' />
+                      {/* <MdLaptopMac className='event-icon' /> */}
                     </div>
                     <div className='card-content'>
                       <div
@@ -265,7 +265,7 @@ const EventsModal = ({ showModal, setShowModal, scrollRemove }) => {
                   <div className='event-card' style={{ marginTop: '14px' }}>
                     <div className='card-img'>
                       {/* <img src={calender} /> */}
-                      <GiThreeFriends className='event-icon' />
+                      {/* <GiThreeFriends className='event-icon' /> */}
                     </div>
                     <div className='card-content'>
                       <p className='card-title'>New In-person event</p>
