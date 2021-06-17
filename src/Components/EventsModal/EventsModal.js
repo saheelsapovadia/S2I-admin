@@ -5,9 +5,9 @@ import '../Modal/Modal.css';
 import './EventsModal.css';
 
 import zoom from './zoom.png';
-// import { IoIosArrowBack } from 'react-icons/io';
-// import { IoCalendarOutline } from 'react-icons/io5';
-// import { FiMonitor } from 'react-icons/fi';
+import { IoIosArrowBack } from 'react-icons/io';
+import { IoCalendarOutline } from 'react-icons/io5';
+import { FiMonitor } from 'react-icons/fi';
 // import { GiThreeFriends } from 'react-icons/gi';
 import { HiDuplicate } from 'react-icons/hi';
 export const Background = styled.div`
@@ -278,10 +278,10 @@ const EventsModal = ({ showModal, setShowModal, scrollRemove }) => {
               </div>
             ) : (
               <div className='container'>
-                {/* <IoIosArrowBack
+                <IoIosArrowBack
                   className='back-icon'
                   onClick={() => setCurrPage(1)}
-                /> */}
+                />
                 <p>Event Details</p>
                 <div className='a-wrapper page2'>
                   <div className='field'>
@@ -298,7 +298,7 @@ const EventsModal = ({ showModal, setShowModal, scrollRemove }) => {
                   </div>
                   <div className='field'>
                     <div className='img'>
-                      {/* <IoCalendarOutline className='t' /> */}
+                      <IoCalendarOutline className='t' />
                     </div>
                     <div className='field-content' id='fc'>
                       <p className='title'>Date and time</p>
@@ -368,7 +368,7 @@ const EventsModal = ({ showModal, setShowModal, scrollRemove }) => {
                   </div>
                   <div className='field'>
                     <div className='img'>
-                      {/* <FiMonitor className='t' /> */}
+                      <FiMonitor className='t' />
                     </div>
                     <div className='field-content adjust'>
                       <p className='title'>Host Platform</p>
@@ -404,7 +404,7 @@ const EventsModal = ({ showModal, setShowModal, scrollRemove }) => {
                   </div>
                   <div className='field'>
                     <div className='img'>
-                      {/* <MdLockOutline className='t' /> */}
+                      <MdLockOutline className='t' />
                     </div>
                     <div className='field-content adjust'>
                       <p className='title'>Privacy</p>
