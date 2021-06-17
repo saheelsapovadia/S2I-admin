@@ -5,11 +5,11 @@ import '../Modal/Modal.css';
 import './EventsModal.css';
 
 // import zoom from './zoom.png';
-// import { IoIosArrowBack } from 'react-icons/io';
-// import { IoCalendarOutline } from 'react-icons/io5';
-// import { FiMonitor } from 'react-icons/fi';
-// import { GiThreeFriends } from 'react-icons/gi';
-// import { HiDuplicate } from 'react-icons/hi';
+import { IoIosArrowBack } from 'react-icons/io';
+import { IoCalendarOutline } from 'react-icons/io5';
+import { FiMonitor } from 'react-icons/fi';
+import { GiThreeFriends } from 'react-icons/gi';
+import { HiDuplicate } from 'react-icons/hi';
 export const Background = styled.div`
   width: 100%;
   height: 100%;
@@ -223,10 +223,10 @@ const EventsModal = ({ showModal, setShowModal, scrollRemove }) => {
                   <div className='event-card'>
                     <div className='card-img'>
                       {/* <img src={calender} /> */}
-                      {/* <HiDuplicate
+                      <HiDuplicate
                         className='event-icon rev'
                         style={{ color: 'orange' }}
-                      /> */}
+                      />
                     </div>
                     <div className='card-content'>
                       <p className='card-title'>Duplicate event</p>
@@ -242,7 +242,7 @@ const EventsModal = ({ showModal, setShowModal, scrollRemove }) => {
                   <div className='event-card' onClick={onFormClick}>
                     <div className='card-img'>
                       {/* <img src={calender} /> */}
-                      {/* <MdLaptopMac className='event-icon' /> */}
+                      <MdLaptopMac className='event-icon' />
                     </div>
                     <div className='card-content'>
                       <div
@@ -265,7 +265,7 @@ const EventsModal = ({ showModal, setShowModal, scrollRemove }) => {
                   <div className='event-card' style={{ marginTop: '14px' }}>
                     <div className='card-img'>
                       {/* <img src={calender} /> */}
-                      {/* <GiThreeFriends className='event-icon' /> */}
+                      <GiThreeFriends className='event-icon' />
                     </div>
                     <div className='card-content'>
                       <p className='card-title'>New In-person event</p>
@@ -278,14 +278,16 @@ const EventsModal = ({ showModal, setShowModal, scrollRemove }) => {
               </div>
             ) : (
               <div className='container'>
-                {/* <IoIosArrowBack
+                <IoIosArrowBack
                   className='back-icon'
                   onClick={() => setCurrPage(1)}
-                /> */}
+                />
                 <p>Event Details</p>
                 <div className='a-wrapper page2'>
                   <div className='field'>
-                    <div className='img'>{/* <MdTitle className='t' /> */}</div>
+                    <div className='img'>
+                      <MdTitle className='t' />
+                    </div>
                     <div className='field-content'>
                       <p className='title'>Event title</p>
                       <input
@@ -296,7 +298,7 @@ const EventsModal = ({ showModal, setShowModal, scrollRemove }) => {
                   </div>
                   <div className='field'>
                     <div className='img'>
-                      {/* <IoCalendarOutline className='t' /> */}
+                      <IoCalendarOutline className='t' />
                     </div>
                     <div className='field-content' id='fc'>
                       <p className='title'>Date and time</p>
@@ -366,7 +368,7 @@ const EventsModal = ({ showModal, setShowModal, scrollRemove }) => {
                   </div>
                   <div className='field'>
                     <div className='img'>
-                      {/* <FiMonitor className='t' /> */}
+                      <FiMonitor className='t' />
                     </div>
                     <div className='field-content adjust'>
                       <p className='title'>Host Platform</p>
@@ -402,7 +404,7 @@ const EventsModal = ({ showModal, setShowModal, scrollRemove }) => {
                   </div>
                   <div className='field'>
                     <div className='img'>
-                      {/* <MdLockOutline className='t' /> */}
+                      <MdLockOutline className='t' />
                     </div>
                     <div className='field-content adjust'>
                       <p className='title'>Privacy</p>
