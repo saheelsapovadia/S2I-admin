@@ -4,7 +4,7 @@ import { MdClose, MdTitle, MdLockOutline, MdLaptopMac } from 'react-icons/md';
 import '../Modal/Modal.css';
 import './EventsModal.css';
 
-// import zoom from './zoom.png';
+import zoom from './zoom.png';
 // import { IoIosArrowBack } from 'react-icons/io';
 // import { IoCalendarOutline } from 'react-icons/io5';
 // import { FiMonitor } from 'react-icons/fi';
@@ -252,7 +252,7 @@ const EventsModal = ({ showModal, setShowModal, scrollRemove }) => {
                         <p className='card-title'>New virtual event</p>{' '}
                         <div className='v1'></div>
                         <div className='zoom'>
-                          {/* <img src={zoom} /> */}
+                          <img src={zoom} />
                           <p>Zoom integration available</p>
                         </div>
                       </div>
