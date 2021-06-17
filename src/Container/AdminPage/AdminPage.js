@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import EventsModal from '../../Components/EventsModal/EventsModal';
+import EventsModal from '../../Components/EventsModal/EventsModal';
 import './AdminPage.css';
 const AdminPage = () => {
   const [showEventsModal, setShowEventsModal] = useState(false);
@@ -31,11 +31,11 @@ const AdminPage = () => {
   };
   return (
     <>
-      {/* <EventsModal
+      <EventsModal
         showModal={showEventsModal}
         setShowModal={setShowEventsModal}
         scrollRemove={scrollRemove}
-      /> */}
+      />
       <div className='a-main'>
         <button onClick={openEventsModal}>Create Event</button>
       </div>
