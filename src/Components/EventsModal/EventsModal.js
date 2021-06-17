@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { MdClose, MdTitle, MdLockOutline, MdLaptopMac } from 'react-icons/md';
 import '../Modal/Modal.css';
 import './EventsModal.css';
-import calender from './calender.jpg';
+
 import zoom from './zoom.png';
 import { IoIosArrowBack } from 'react-icons/io';
 import { IoCalendarOutline } from 'react-icons/io5';

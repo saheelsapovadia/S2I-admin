@@ -42,7 +42,7 @@ body.modal-open {
   /* width: 35%; */
   width: 335px;
   color: #141414;
-  background: #eff2f6 url(./modal-bottom.png) no-repeat bottom;
+  /* background: #eff2f6 url(./modal-bottom.png) no-repeat bottom; */
   background-size: contain;
 }
 .CloseModalButton {
@@ -55,7 +55,7 @@ body.modal-open {
   left: 0;
   bottom: 0;
   border-radius: 10px 0 0 10px;
-  background-image: url(./modal-bottom.png);
+  /* background-image: url(./modal-bottom.png); */
   background-position: bottom;
   background-size: 100%;
 }
@@ -410,7 +410,7 @@ hr {
     height: 30%;
     /* padding-top: 30px; */
     /* background-color: white; */
-    background: url(./modal-mobile.png) no-repeat;
+    /* background: url(./modal-mobile.png) no-repeat; */
     background-size: 100%;
   }
 }
