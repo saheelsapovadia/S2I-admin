@@ -175,6 +175,10 @@
 }
 #ex {
   width: 100%;
+  background-color: white;
+}
+#datepicker {
+  background-color: white;
 }
 .field-content > input,
 .r > input,
