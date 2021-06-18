@@ -1,0 +1,24 @@
+.timee {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.timee > input {
+  width: 45%;
+  margin: 0;
+  margin-top: 10px;
+  padding: 9px;
+  font-size: 13px;
+  border: 2px solid rgba(177, 173, 173, 0.315);
+  border-radius: 5px;
+
+  caret-color: #48ccac;
+  outline: none;
+  transition: all 0.1s ease-in;
+}
+.timee > input:focus {
+  border: 2px solid #48ccac;
+}
+.timee > .et {
+  margin-left: 10%;
+}
