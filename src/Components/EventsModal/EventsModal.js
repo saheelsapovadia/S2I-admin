@@ -1,4 +1,5 @@
 import React, { useCallback, useRef, useState, useEffect } from 'react';
+import { useHistory } from 'react-router';
 import styled from 'styled-components';
 import { MdClose, MdTitle, MdLockOutline, MdLaptopMac } from 'react-icons/md';
 import '../Modal/Modal.css';
@@ -32,7 +33,13 @@ export const CloseModalButton = styled(MdClose)`
   z-index: 10;
 `;
 
-const EventsModal = ({ showModal, setShowModal, scrollRemove }) => {
+const EventsModal = ({
+  showModal,
+  setShowModal,
+  scrollRemove,
+  event,
+  setEvent,
+}) => {
   const modalRef = useRef();
   const closeModal = (e) => {
     if (modalRef.current === e.target) {
@@ -61,20 +68,98 @@ const EventsModal = ({ showModal, setShowModal, scrollRemove }) => {
     scrollRemove();
     setCurrPage(1);
   };
-  const [currPage, setCurrPage] = useState(1);
 
+  const [title, setTitle] = useState('');
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
+  const [zone, setZone] = useState('');
+  const [startTime, setStartTime] = useState('');
+  const [endTime, setEndTime] = useState('');
+  const [host, setHost] = useState('');
+  const [privacy, setPrivacy] = useState('');
+  const [meetLink, setMeetLink] = useState('');
+  const [currPage, setCurrPage] = useState(1);
   const onFormClick = (e) => {
     setCurrPage(currPage + 1);
   };
 
-  const dateTime = (e) => {
-    e.preventDefault();
-    let id = document.getElementById('datepicker');
-    console.log(id);
-    id.datetimepicker({
-      allowInputToggle: true,
-    });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    switch (name) {
+      case 'host':
+        OnClick4(e);
+        setHost(value);
+        break;
+      case 'privacy':
+        OnClick3(e);
+        setPrivacy(value);
+        break;
+      case 'title':
+        setTitle(value);
+        break;
+      case 'zone':
+        setZone(value);
+        break;
+      case 'startDate':
+        setStartDate(value);
+        break;
+      case 'endDate':
+        setEndDate(value);
+        break;
+      case 'startTime':
+        setStartTime(value);
+        break;
+      case 'endTime':
+        setEndTime(value);
+        break;
+      case 'meet':
+        setMeetLink(value);
+    }
   };
+  console.log(title, privacy, host, zone, startDate);
+  const [allOK, setAllOK] = useState(false);
+  useEffect(() => {
+    console.log([
+      title,
+      startDate,
+      startTime,
+      endDate,
+      endTime,
+      zone,
+      host,
+      privacy,
+    ]);
+    if (
+      title.length != 0 &&
+      startDate.length != 0 &&
+      startTime.length != 0 &&
+      endDate.length != 0 &&
+      endTime.length != 0 &&
+      zone.length != 0 &&
+      host.length != 0 &&
+      privacy.length != 0
+    ) {
+      setAllOK(true);
+    }
+  }, [title, startDate, startTime, endDate, endTime, zone, host, privacy]);
+  const history = useHistory();
+  const createEvent = (e) => {
+    let newEvent = {
+      title: title,
+      startDate: startDate,
+      endDate: endDate,
+      startTime: startTime,
+      endTime: endTime,
+      zone: zone,
+      host: host,
+      meetLink: meetLink,
+      privacy: privacy,
+    };
+    setEvent(newEvent);
+    history.push('/eventpreview');
+  };
+
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [st, setSt] = useState('');
   const [showSuggestions2, setShowSuggestions2] = useState(false);
@@ -83,35 +168,41 @@ const EventsModal = ({ showModal, setShowModal, scrollRemove }) => {
   const [ex, setEx] = useState('');
   const OnClick1 = (e) => {
     e.preventDefault();
-
-    let ins = document.getElementById('ts');
-    setSt(e.target.innerText);
+    setStartTime(e.target.innerText);
     setShowSuggestions(false);
   };
 
   const OnClick2 = (e) => {
     e.preventDefault();
 
-    let ins = document.getElementById('te');
-    setEt(e.target.innerText);
+    setEndTime(e.target.innerText);
     setShowSuggestions2(false);
   };
-  const [ifZoom, setIfZoom] = useState(false);
+  const [ifZoom, setIfZoom] = useState(0);
+  const [ifVisible, setIfVisible] = useState(0);
   const OnClick3 = (e) => {
     e.preventDefault();
-
-    let ins = document.getElementById('ex');
-
-    setEx(e.target.innerText);
-    setShowSuggestions3(false);
+    console.log(e.target.value);
+    if (e.target.value == 'Public') {
+      setIfVisible(1);
+    } else if (e.target.value == 'Private') {
+      setIfVisible(2);
+    } else if (e.target.value == '') {
+      setIfVisible(1);
+    }
   };
   const OnClick4 = (e) => {
     e.preventDefault();
     console.log(e.target.value);
     if (e.target.value == 'Zoom') {
-      setIfZoom(true);
+      setIfZoom(1);
+    } else if (e.target.value == 'Virtual') {
+      setIfZoom(2);
+    } else if (e.target.value == '') {
+      setIfZoom(0);
     }
   };
+
   const close = () => {
     setShowSuggestions(false);
   };
@@ -185,19 +276,7 @@ const EventsModal = ({ showModal, setShowModal, scrollRemove }) => {
       </span>
     </div>
   );
-  let sug3 = (
-    <div className='preference__modal__suggestions' onBlur={close}>
-      <span className='' key='1' onClick={OnClick3}>
-        10:00pm
-      </span>
-      <span className='' key='2' onClick={OnClick3}>
-        10:00pm
-      </span>
-      <span className='' key='2' onClick={OnClick3}>
-        10:00pm
-      </span>
-    </div>
-  );
+
   return (
     <>
       {showModal ? (
@@ -292,7 +371,10 @@ const EventsModal = ({ showModal, setShowModal, scrollRemove }) => {
                       <p className='title'>Event title</p>
                       <input
                         type='text'
+                        name='title'
+                        onChange={handleChange}
                         placeholder='Ex: IIT Hyderabad Career Fair'
+                        value={title}
                       ></input>
                     </div>
                   </div>
@@ -315,17 +397,18 @@ const EventsModal = ({ showModal, setShowModal, scrollRemove }) => {
                         <input
                           type='date'
                           id='datepicker'
+                          name='startDate'
                           placeholder='Start Date'
+                          onChange={handleChange}
                           // onClick={setDatepicker()}
                         ></input>
                         <div className='prefSearch'>
                           <input
                             id='ts'
-                            value={st}
+                            value={startTime}
+                            name='startTime'
                             placeholder='Start time'
-                            onChange={(e) => {
-                              setSt(e.target.value);
-                            }}
+                            onChange={handleChange}
                             onClick={() => setShowSuggestions(true)}
                             // onBlur={() => setShowSuggestions(false)}
                           ></input>
@@ -333,15 +416,21 @@ const EventsModal = ({ showModal, setShowModal, scrollRemove }) => {
                         </div>
                       </div>
                       <div className='r'>
-                        <input type='date' id='datepicker'></input>
+                        <input
+                          type='date'
+                          name='endDate'
+                          id='datepicker'
+                          onChange={handleChange}
+                        ></input>
 
                         <div className='prefSearch'>
                           <input
                             id='te'
-                            value={et}
+                            value={endTime}
+                            name='endTime'
                             placeholder='End time'
                             onChange={(e) => {
-                              setEt(e.target.value);
+                              handleChange();
                             }}
                             onClick={() => setShowSuggestions2(true)}
                             // onBlur={() => setShowSuggestions(false)}
@@ -353,7 +442,8 @@ const EventsModal = ({ showModal, setShowModal, scrollRemove }) => {
                       <select
                         id='ex'
                         className=''
-                        name='fromMonth'
+                        name='zone'
+                        onChange={handleChange}
                         // value={from.month}
                         // onChange={handleInput}
                       >
@@ -375,21 +465,22 @@ const EventsModal = ({ showModal, setShowModal, scrollRemove }) => {
                       <select
                         id='ex'
                         className=''
-                        name='fromMonth'
+                        name='host'
                         onClick={(e) => {
                           OnClick4(e);
                         }}
-                        onChange={OnClick4}
+                        onChange={handleChange}
+                        // onChange={OnClick4}
                         // value={from.month}
                         // onChange={handleInput}
                       >
-                        <option value='Select'>Select...</option>
+                        <option value=''>Select...</option>
                         <option value='Zoom'>Zoom via Jumpstart</option>
                         <option value='Virtual'>Add Virtual event link</option>
 
                         {/* <option value='May'>May</option> */}
                       </select>
-                      {ifZoom ? (
+                      {ifZoom == 1 ? (
                         <p className='footer'>
                           500 max attendee capacity <br />
                           Zoom links will be generated and automatically shared
@@ -397,6 +488,14 @@ const EventsModal = ({ showModal, setShowModal, scrollRemove }) => {
                           recieve their Zoom links one hour before the event
                           starts.
                         </p>
+                      ) : ifZoom == 2 ? (
+                        <input
+                          type='text'
+                          name='meet'
+                          onChange={handleChange}
+                          placeholder='www.meet.google.com'
+                          value={meetLink}
+                        ></input>
                       ) : (
                         ''
                       )}
@@ -411,25 +510,37 @@ const EventsModal = ({ showModal, setShowModal, scrollRemove }) => {
                       <select
                         id='ex'
                         className=''
-                        name='fromMonth'
+                        name='privacy'
                         // value={from.month}
                         // onChange={handleInput}
+                        onChange={handleChange}
                       >
-                        <option value='Select'>Select...</option>
-                        <option value='PDT'>Public</option>
-                        <option value='MDT'>Private</option>
+                        <option value=''>Select...</option>
+                        <option value='Public'>Public</option>
+                        <option value='Private'>Private</option>
 
                         {/* <option value='May'>May</option> */}
                       </select>
-                      <p className='footer'>
-                        Your event will not be discoverable on Jumpstart
-                        Marketplace
-                      </p>
+                      {ifVisible == 1 ? (
+                        <p className='footer'>
+                          Your event will be discoverable on Jumpstart
+                          Marketplace
+                        </p>
+                      ) : ifVisible == 2 ? (
+                        <p className='footer'>
+                          Your event will not be discoverable on Jumpstart
+                          Marketplace
+                        </p>
+                      ) : (
+                        ''
+                      )}
                     </div>
                   </div>
                 </div>
                 <div className='bottom-nav'>
-                  <button>Create event</button>
+                  <button disabled={!allOK} onClick={createEvent}>
+                    Create event
+                  </button>
                 </div>
               </div>
             )}
