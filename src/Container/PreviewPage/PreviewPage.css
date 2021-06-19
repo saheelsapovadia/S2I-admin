@@ -31,7 +31,7 @@
   overflow-y: hidden;
 }
 .edit-panel {
-  width: 250px;
+  width: 350px;
   /* height: 100vh; */
   overflow-y: scroll;
   padding: 30px;
@@ -143,7 +143,168 @@
 }
 
 .preview {
-  /* width: 75%; */
+  width: calc(100% - 350px);
   /* height: 100vh; */
-  overflow-y: hidden;
+  overflow-y: scroll;
+}
+.container-pre > .title {
+  width: 100%;
+  position: sticky;
+  background-color: white;
+  top: 0;
+
+  border-bottom: 2px solid #888;
+}
+.container-pre > .title > p {
+  font-size: 17px;
+  font-weight: 700;
+  margin-left: 50px;
+  margin: 30px;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 30px 0;
+  width: max-content;
+  border-bottom: 4px solid #555;
+}
+.container-pre > .cover-photo {
+  height: 300px;
+  width: 100%;
+  background-color: blueviolet;
+}
+.content-pre {
+}
+.d1,
+.d2,
+.d3,
+.d4,
+.d5,
+.d6,
+.d7,
+.d8 {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  margin: 20px 0;
+  margin-left: 5%;
+}
+.d3 {
+  flex-direction: column;
+}
+
+.d1-a {
+  display: flex;
+  flex-direction: row;
+  width: 75%;
+}
+.d1-a > .logo {
+  color: rgb(199, 41, 41);
+  font-size: 100px;
+}
+.d1 > .rsvp {
+  /* margin-left: auto; */
+  width: 25%;
+}
+.d1 > .rsvp > div {
+  padding: 0px 70px;
+  color: white;
+  background-color: rgb(31, 87, 241);
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  box-shadow: none;
+  cursor: pointer;
+  display: block;
+  text-align: center;
+}
+.d1 > .rsvp > div > p {
+  padding: 10px 0;
+}
+.d1-head {
+  margin-top: 15px;
+}
+.d1-head > p:first-child {
+  color: rgb(50, 112, 228);
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 15px;
+  margin: 0;
+  margin-bottom: 13px;
+}
+.d1-head > p:last-child {
+  font-weight: 700;
+  margin: 0;
+}
+.content-pre > .hh {
+  color: rgba(78, 25, 25, 0.795);
+  font-size: 0.21px;
+}
+.d2-a {
+  width: 75%;
+  /* opacity: 0.7; */
+
+  padding-right: 10px;
+}
+.d2-a > p:first-child,
+.d2-b > p:first-child,
+.d3-a > p:first-child {
+  font-weight: 700;
+  margin: 0;
+}
+.d2-a > p:last-child,
+.d2-b > p:last-child {
+  font-size: 14px;
+  line-height: 22px;
+}
+.d3 > p:first-child,
+.d4 > p:first-child,
+.d5 > p:first-child,
+.d6 > p:first-child,
+.d7 > p:first-child,
+.d8 > p:first-child {
+  font-weight: 700;
+  margin: 0;
+  margin-bottom: 20px;
+}
+.speaker {
+  display: flex;
+  flex-direction: row;
+  /* opacity: 0.7; */
+  margin-bottom: 15px;
+}
+.speaker-pic {
+  width: 30%;
+}
+.speaker-pic > .ic {
+  font-size: 150px;
+}
+.speaker-bio {
+  padding-left: 10px;
+}
+.speaker-bio > .name {
+  font-size: 40px;
+  font-weight: 700;
+  margin: 0;
+}
+.speaker-bio > .sub {
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+}
+.speaker-bio > .sub > p:first-child {
+  margin: 0;
+  margin-top: 3px;
+  margin-right: 4px;
+  font-weight: 700;
+}
+.LI {
+  width: 27px;
+  height: 25px;
+}
+.speaker-bio > p:nth-child(3) {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  line-height: 22px;
 }
