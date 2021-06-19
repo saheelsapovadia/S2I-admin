@@ -27,14 +27,14 @@ const Layout = () => {
     <>
       <BrowserRouter history={history}>
         <Switch>
-          <Route
+          {/* <Route
             path='/'
             exact
             render={(props) => adminpage(props)}
             // component={AdminPage}
-          ></Route>
+          ></Route> */}
           <Route
-            path='/eventpreview'
+            path='/'
             exact
             render={(props) => previewpage(props)}
             //  component={PreviewPage}

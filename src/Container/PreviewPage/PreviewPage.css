@@ -162,9 +162,9 @@
   margin: 30px;
   margin-top: 0;
   margin-bottom: 0;
-  padding: 30px 0;
+  padding: 25px 0;
   width: max-content;
-  border-bottom: 4px solid #555;
+  border-bottom: 3px solid black;
 }
 .container-pre > .cover-photo {
   height: 300px;
@@ -307,4 +307,120 @@
   padding: 0;
   font-size: 14px;
   line-height: 22px;
+}
+.d7,
+.d8 {
+  flex-direction: column;
+}
+.cards {
+  display: flex;
+  flex-flow: row wrap;
+  /* justify-content: center; */
+}
+.card {
+  width: 280px;
+  border: 2px solid rgba(128, 128, 128, 0.5);
+  border-radius: 5px;
+  position: relative;
+  z-index: -99;
+  flex-basis: 280px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+.card > .content {
+  padding: 8px;
+}
+.logo {
+  color: rgb(199, 41, 41);
+  font-size: 100px;
+}
+.card > .content > .header {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.content > p:nth-child(2) {
+  margin: 0;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+.content > p:nth-child(3) {
+  font-size: 14px;
+  margin: 0;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+.content > p:nth-child(4) {
+  font-size: 13px;
+  margin: 0;
+  margin-bottom: 25px;
+  font-weight: 500;
+}
+.header > p {
+  margin: 0;
+  font-size: 12px;
+  margin-left: 2px;
+}
+.footer {
+  display: flex;
+  flex-direction: row;
+  border-top: 2px solid rgba(128, 128, 128, 0.438);
+  padding: 20px 10px;
+}
+.back-arr {
+  margin-left: 10px;
+  font-size: 23px;
+  margin-top: 8px;
+  cursor: pointer;
+}
+.bookmark {
+  font-size: 18px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+.location {
+  /* margin-top: 2px; */
+}
+.footer > p {
+  margin: 0;
+  margin-left: auto;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 8px;
+  border: 2px solid rgb(180, 178, 178);
+  border-radius: 3px;
+  cursor: pointer;
+}
+.d8 > div {
+  display: flex;
+  flex-direction: row;
+}
+.d8-a {
+  width: 70%;
+  padding-right: 15px;
+  /* font-weight: 500; */
+}
+
+.d8-b {
+  /* width: 25%; */
+  /* font-weight: 500; */
+}
+.d8-a > p {
+  font-size: 14px;
+  line-height: 22px;
+}
+.d8-b > div {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+}
+.d8-b > div > p {
+  margin: 0;
+  font-size: 15px;
+}
+.d8-b > div > p:first-child {
+  color: rgb(78, 168, 196);
+  margin-right: 2px;
 }
