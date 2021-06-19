@@ -9,8 +9,8 @@ const Layout = () => {
     <>
       <BrowserRouter history={history}>
         <Switch>
-          {/* <Route path='/' exact component={AdminPage}></Route> */}
-          <Route path='/' exact component={PreviewPage}></Route>
+          <Route path='/' exact component={AdminPage}></Route>
+          <Route path='/eventpreview' exact component={PreviewPage}></Route>
         </Switch>
       </BrowserRouter>
     </>
