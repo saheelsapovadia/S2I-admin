@@ -5,26 +5,81 @@ import EditPanel from '../../Components/EditPanel/EditPanel';
 import { IoLogoIonic } from 'react-icons/io';
 import { BsPeopleCircle } from 'react-icons/bs';
 import LI from './LI.png';
-const PreviewPage = () => {
+const PreviewPage = ({ event, setEvent }) => {
   const [editPage, setEditPage] = useState(0);
-  const [photo, setPhoto] = useState(0);
+  const [photo, setPhoto] = useState(4);
+  const [url, setUrl] = useState('cover4.jpg');
+  const [speakerPic, setSpeakerPic] = useState(null);
+  const [speaker, setSpeaker] = useState([]);
+  useEffect(() => {
+    if (photo == 1) {
+      setUrl('event-photo.jpg');
+    } else if (photo == 2) {
+      setUrl('cover2.jpg');
+    } else if (photo == 3) {
+      setUrl('cover3.jpg');
+    } else if (photo == 4) {
+      setUrl('cover4.jpg');
+    }
+  }, [photo]);
+  var divb = {
+    backgroundImage: 'url(' + url + ')',
+    backgroundSize: 'cover',
+  };
+  console.log(speaker);
+  let speakers = speaker.map((sp, index) => {
+    return (
+      <div className='speaker'>
+        <div className='speaker-pic'>
+          <BsPeopleCircle className='ic' />
+        </div>
+        <div className='speaker-bio'>
+          <p className='name'>{sp.name}</p>
+          <div className='sub'>
+            <p>
+              {sp.job} @ {sp.company}{' '}
+            </p>
+
+            <img className='LI' src={LI} />
+          </div>
+          <p>
+            {sp.bio}
+            <br />
+            <br />
+          </p>
+        </div>
+      </div>
+    );
+  });
   return (
     <>
       <div className='p-container'>
-        <EditPanel setPhoto={setPhoto} />
+        <EditPanel
+          setPhoto={setPhoto}
+          photo={photo}
+          event={event}
+          setEvent={setEvent}
+          speakerPic={speakerPic}
+          setSpeakerPic={setSpeakerPic}
+          speaker={speaker}
+          setSpeaker={setSpeaker}
+        />
         <div className='preview'>
           <div className='container-pre'>
             <div className='title'>
               <p>Your event preview</p>
             </div>
-            <div className='cover-photo'></div>
+            <div className='cover-photo' style={divb}></div>
             <div className='content-pre'>
               <div className='d1'>
                 <div className='d1-a'>
                   <IoLogoIonic className='logo' />
                   <div className='d1-head'>
-                    <p> Mon June 19, 2021 @7:00 PM to 8:00 PM </p>
-                    <p>Happy hour</p>
+                    <p>
+                      {' '}
+                      {event.startDate} @{event.startTime}{' '}
+                    </p>
+                    <p>{event.title}</p>
                   </div>
                 </div>
                 <div className='rsvp'>
@@ -50,34 +105,16 @@ const PreviewPage = () => {
 
                 <div className='d2-b'>
                   <p>Date and time</p>
-                  <p>Aug 17, 2020, 7:00PM - Aug 17, 2020, 8:00PM</p>
+                  <p>
+                    {event.startDate} {event.startTime} - {event.endDate}{' '}
+                    {event.endTime}
+                  </p>
                 </div>
               </div>
               <hr className='hh' />
               <div className='d3'>
                 <p>Speakers</p>
-                <div className='speaker'>
-                  <div className='speaker-pic'>
-                    <BsPeopleCircle className='ic' />
-                  </div>
-                  <div className='speaker-bio'>
-                    <p className='name'>Speaker name</p>
-                    <div className='sub'>
-                      <p>Job title @ Jumpstart </p>
-
-                      <img className='LI' src={LI} />
-                    </div>
-                    <p>
-                      Use this section to give details about your event. What it
-                      will be about? What attendees learn?
-                      <br />
-                      <br />
-                      Well organized and easy to understand Web building
-                      tutorials with lots of examples of how to use HTML, CSS,
-                      JavaScript, SQL, Python, PHP, Bootstrap, Java, ...
-                    </p>
-                  </div>
-                </div>
+                {speakers}
                 <div className='speaker'>
                   <div className='speaker-pic'>
                     <BsPeopleCircle className='ic' />
