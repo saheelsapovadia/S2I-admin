@@ -8,7 +8,16 @@ import CoverPhoto from '../Sections/CoverPhoto/CoverPhoto';
 import Speakers from '../Sections/Speakers/Speakers';
 import Agenda from '../Sections/Agenda/Agenda';
 import FeaturedJobs from '../Sections/FeaturedJobs/FeaturedJobs';
-const EditPanel = ({ setPhoto }) => {
+const EditPanel = ({
+  setPhoto,
+  event,
+  photo,
+  setEvent,
+  speaker,
+  setSpeaker,
+  speakerPic,
+  setSpeakerPic,
+}) => {
   const [pageNo, setPageNo] = useState(0);
   console.log(pageNo);
   return (
@@ -24,22 +33,23 @@ const EditPanel = ({ setPhoto }) => {
             </div>
             <div className='field-e'>
               <MdTitle className='t' />
-              <p>Happy hours</p>
+              <p>{event.title}</p>
             </div>
             <div className='field-e'>
               <IoCalendarOutline className='t' />
               <p>
-                Mon June 19, 2021, 7:00 PM to 8:00 PM
+                {event.startDate} {event.startTime} - {event.endDate}{' '}
+                {event.endTime}
                 <br /> (PDT)
               </p>
             </div>
             <div className='field-e'>
               <FiMonitor className='t' />
-              <p>Zoom via Jumpstart</p>
+              <p>{event.host}</p>
             </div>
             <div className='field-e'>
               <MdLockOutline className='t' />
-              <p>Private</p>
+              <p>{event.privacy}</p>
             </div>
           </div>
           <div className='section'>
@@ -112,9 +122,16 @@ const EditPanel = ({ setPhoto }) => {
           </div>
         </>
       ) : pageNo == 1 ? (
-        <CoverPhoto setPageNo={setPageNo} setPhoto={setPhoto} />
+        <CoverPhoto setPageNo={setPageNo} photo={photo} setPhoto={setPhoto} />
       ) : pageNo == 3 ? (
-        <Speakers setPageNo={setPageNo} setPhoto={setPhoto} />
+        <Speakers
+          setPageNo={setPageNo}
+          setPhoto={setPhoto}
+          speakerPic={speakerPic}
+          setSpeakerPic={setSpeakerPic}
+          speaker={speaker}
+          setSpeaker={setSpeaker}
+        />
       ) : pageNo == 4 ? (
         <Agenda setPageNo={setPageNo} setPhoto={setPhoto} />
       ) : pageNo == 7 ? (

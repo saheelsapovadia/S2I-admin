@@ -58,6 +58,15 @@
   margin-bottom: 10px;
   cursor: pointer;
 }
+.p2 {
+  background-image: url('cover2.jpg');
+}
+.p3 {
+  background-image: url('cover3.jpg');
+}
+.p4 {
+  background-image: url('cover4.jpg');
+}
 .select {
   width: 25px;
   height: 25px;

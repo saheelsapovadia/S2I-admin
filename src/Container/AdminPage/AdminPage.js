@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import EventsModal from '../../Components/EventsModal/EventsModal';
 import './AdminPage.css';
-const AdminPage = () => {
+const AdminPage = ({ event, setEvent }) => {
   const [showEventsModal, setShowEventsModal] = useState(false);
   const [left, setLeft] = useState();
   const [top, setTop] = useState();
@@ -29,18 +29,15 @@ const AdminPage = () => {
     // document.body.style.position = 'relative';
     window.scrollTo(left, top);
   };
-  const [event, setEvent] = useState({});
-  useEffect(() => {
-    console.log(event);
-  }, [event]);
+
   return (
     <>
       <EventsModal
         showModal={showEventsModal}
         setShowModal={setShowEventsModal}
         scrollRemove={scrollRemove}
-        event={event}
-        setEvent={setEvent}
+        eventMain={event}
+        setEventMain={setEvent}
       />
       <div className='a-main'>
         <button onClick={openEventsModal}>Create Event</button>

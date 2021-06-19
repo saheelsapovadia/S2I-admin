@@ -37,8 +37,8 @@ const EventsModal = ({
   showModal,
   setShowModal,
   scrollRemove,
-  event,
-  setEvent,
+  eventMain,
+  setEventMain,
 }) => {
   const modalRef = useRef();
   const closeModal = (e) => {
@@ -117,19 +117,19 @@ const EventsModal = ({
         setMeetLink(value);
     }
   };
-  console.log(title, privacy, host, zone, startDate);
+  // console.log(title, privacy, host, zone, startDate);
   const [allOK, setAllOK] = useState(false);
   useEffect(() => {
-    console.log([
-      title,
-      startDate,
-      startTime,
-      endDate,
-      endTime,
-      zone,
-      host,
-      privacy,
-    ]);
+    // console.log([
+    //   title,
+    //   startDate,
+    //   startTime,
+    //   endDate,
+    //   endTime,
+    //   zone,
+    //   host,
+    //   privacy,
+    // ]);
     if (
       title.length != 0 &&
       startDate.length != 0 &&
@@ -156,7 +156,7 @@ const EventsModal = ({
       meetLink: meetLink,
       privacy: privacy,
     };
-    setEvent(newEvent);
+    setEventMain(newEvent);
     history.push('/eventpreview');
   };
 

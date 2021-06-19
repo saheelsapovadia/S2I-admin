@@ -16,3 +16,50 @@
   width: 100%;
   margin-left: 0;
 }
+#file {
+  display: none;
+}
+.ss {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 5px;
+  padding: 10px;
+  border-radius: 4px;
+}
+.ss:hover {
+  background-color: rgba(209, 206, 206, 0.411);
+}
+.ss:hover .edi,
+.ss:hover .del {
+  display: block;
+}
+.ss > .name > p:first-child {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+.ss > .name > p:last-child {
+  margin: 0;
+  font-size: 13px;
+  /* font-weight: 600; */
+}
+.ss > .pic {
+  font-size: 27px;
+  width: 20%;
+}
+.ss > .edi,
+.ss > .del {
+  border-radius: 80px;
+  background-color: rgb(30, 107, 207);
+  color: white;
+  padding: 4px;
+  margin-top: 2px;
+  cursor: pointer;
+  display: none;
+}
+.ss > .edi {
+  margin-left: auto;
+}
+.ss > .del {
+  margin-left: 7px;
+}
