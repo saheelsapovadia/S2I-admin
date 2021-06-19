@@ -27,8 +27,8 @@ const Layout = () => {
     <>
       <BrowserRouter history={history}>
         <Switch>
-          <Route path='/' exact component={AdminPage}></Route>
-          <Route path='/eventpreview' exact component={PreviewPage}></Route>
+          <Route path='/' exact component={adminpage}></Route>
+          <Route path='/eventpreview' exact component={previewpage}></Route>
         </Switch>
       </BrowserRouter>
     </>
