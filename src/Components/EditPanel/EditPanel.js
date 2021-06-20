@@ -8,6 +8,7 @@ import CoverPhoto from '../Sections/CoverPhoto/CoverPhoto';
 import Speakers from '../Sections/Speakers/Speakers';
 import Agenda from '../Sections/Agenda/Agenda';
 import FeaturedJobs from '../Sections/FeaturedJobs/FeaturedJobs';
+import TextBlock from '../Sections/TextBlock/TextBlock';
 const EditPanel = ({
   setPhoto,
   event,
@@ -17,9 +18,13 @@ const EditPanel = ({
   setSpeaker,
   speakerPic,
   setSpeakerPic,
+  agenda,
+  setAgenda,
+  textBlock,
+  setTextBlock,
 }) => {
   const [pageNo, setPageNo] = useState(0);
-  console.log(pageNo);
+  // console.log(pageNo);
   return (
     <div className='edit-panel'>
       {pageNo == 0 ? (
@@ -92,7 +97,7 @@ const EditPanel = ({
               </div>
             </div>
             <hr className='op' />
-            <div className='options'>
+            <div className='options' onClick={() => setPageNo(5)}>
               <div className='t'>
                 <p>Text Block</p>
               </div>
@@ -133,7 +138,18 @@ const EditPanel = ({
           setSpeaker={setSpeaker}
         />
       ) : pageNo == 4 ? (
-        <Agenda setPageNo={setPageNo} setPhoto={setPhoto} />
+        <Agenda
+          setPageNo={setPageNo}
+          setPhoto={setPhoto}
+          agenda={agenda}
+          setAgenda={setAgenda}
+        />
+      ) : pageNo == 5 ? (
+        <TextBlock
+          setPageNo={setPageNo}
+          textBlock={textBlock}
+          setTextBlock={setTextBlock}
+        />
       ) : pageNo == 7 ? (
         <FeaturedJobs setPageNo={setPageNo} setPhoto={setPhoto} />
       ) : (

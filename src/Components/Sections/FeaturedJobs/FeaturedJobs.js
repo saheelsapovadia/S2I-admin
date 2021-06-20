@@ -4,6 +4,7 @@ import { IoArrowUpCircleSharp } from 'react-icons/io5';
 import '../Speakers/Speakers.css';
 import '../CoverPhoto/CoverPhoto.css';
 import '../Agenda/Agenda.css';
+import './FeaturedJobs.css';
 const FeaturedJobs = ({ setPageNo, setPhoto }) => {
   const select = (e) => {};
   const [change, setChange] = useState(0);
@@ -37,8 +38,11 @@ const FeaturedJobs = ({ setPageNo, setPhoto }) => {
           <div className='head'>
             <p className='t'>Featured jobs</p>
           </div>
-          <div className='field-content mt'>
-            <p className='title-s'>Job</p>
+          <div className='field-content mt fj'>
+            <div>
+              <p className='title-s'>Job</p>
+              <p>Remove</p>
+            </div>
             <select
               id='ex'
               className='job'
@@ -48,10 +52,10 @@ const FeaturedJobs = ({ setPageNo, setPhoto }) => {
               // onChange={handleInput}
             >
               <option value='Select'>Select...</option>
-              <option value='PDT'>Pacific time - Los Angeles</option>
-              <option value='MDT'>Denver</option>
-              <option value='CDT'>Central time - Chicago</option>
-              <option value='EDT'>Eastern time - New York</option>
+              <option value='PDT'>Motion Design Intern</option>
+              <option value='MDT'>Developer Intern</option>
+              <option value='CDT'>Cloud Intern</option>
+              <option value='EDT'>UX/UI Design Intern</option>
               {/* <option value='May'>May</option> */}
             </select>
           </div>
