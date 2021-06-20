@@ -15,6 +15,7 @@ const PreviewPage = ({ event, setEvent }) => {
   const [speakerPic, setSpeakerPic] = useState(null);
   const [speaker, setSpeaker] = useState([]);
   const [agenda, setAgenda] = useState([]);
+  const [textBlock, setTextBlock] = useState('');
   useEffect(() => {
     if (photo == 1) {
       setUrl('event-photo.jpg');
@@ -30,7 +31,7 @@ const PreviewPage = ({ event, setEvent }) => {
     backgroundImage: 'url(' + url + ')',
     backgroundSize: 'cover',
   };
-  console.log(speaker);
+  // console.log(textBlock);
   let speakers = speaker.map((sp, index) => {
     return (
       <div className='speaker'>
@@ -64,7 +65,7 @@ const PreviewPage = ({ event, setEvent }) => {
       </div>
     );
   });
-  console.log(agenda);
+  // console.log(agenda);
   return (
     <>
       <div className='p-container'>
@@ -79,6 +80,8 @@ const PreviewPage = ({ event, setEvent }) => {
           setSpeaker={setSpeaker}
           agenda={agenda}
           setAgenda={setAgenda}
+          textBlock={textBlock}
+          setTextBlock={setTextBlock}
         />
         <div className='preview'>
           <div className='container-pre'>
@@ -216,15 +219,49 @@ const PreviewPage = ({ event, setEvent }) => {
               <hr className='hh' />
               <div className='d5'>
                 <p>Text block</p>
-                <p>
-                  If there is somethig extra special happening at the event that
-                  is important, add it here!. A few options to brainstorm you're
-                  throwing a hiring event...
-                </p>
+                <p>{textBlock}</p>
               </div>
               <hr className='hh' />
               <div className='d6'>
                 <p>Gallery</p>
+                <div className='pics'>
+                  <div className='pic'>
+                    <img src='ofc1.jpg' />
+                  </div>
+                  <div className='pic'>
+                    <img src='ofc2.jpg' />
+                  </div>
+                  <div className='pic'>
+                    <img src='ofc3.jpg' />
+                  </div>
+                  <div className='pic'>
+                    <img src='ofc4.jpg' />
+                  </div>
+                  <div className='pic'>
+                    <img src='ofc1.jpg' />
+                  </div>
+                  <div className='pic'>
+                    <img src='ofc2.jpg' />
+                  </div>
+                  <div className='pic'>
+                    <img src='ofc3.jpg' />
+                  </div>
+                  <div className='pic'>
+                    <img src='ofc4.jpg' />
+                  </div>
+                  <div className='pic'>
+                    <img src='ofc1.jpg' />
+                  </div>
+                  <div className='pic'>
+                    <img src='ofc2.jpg' />
+                  </div>
+                  <div className='pic'>
+                    <img src='ofc3.jpg' />
+                  </div>
+                  <div className='pic'>
+                    <img src='ofc4.jpg' />
+                  </div>
+                </div>
               </div>
               <hr className='hh' />
               <div className='d7'>

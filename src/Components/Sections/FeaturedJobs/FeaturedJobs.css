@@ -1,2 +1,14 @@
-.jobs {
+.fj > div {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+}
+.fj > div > p {
+  margin: 0;
+}
+.fj > div > p:last-child {
+  margin-left: auto;
+  font-size: 13px;
+  color: rgb(0, 89, 255);
+  cursor: pointer;
 }

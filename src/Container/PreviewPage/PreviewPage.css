@@ -310,6 +310,7 @@
 }
 .d5,
 .d4,
+.d6,
 .d7,
 .d8 {
   flex-direction: column;
@@ -350,11 +351,23 @@
   width: 20%;
   /* margin-right: 100px; */
 }
-.cards {
+
+.cards,
+.pics {
   display: flex;
   flex-flow: row wrap;
   /* justify-content: center; */
 }
+.pic > img {
+  height: 230px;
+  width: 230px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  z-index: 11;
+  flex-basis: 80px;
+  border-radius: 4px;
+}
+
 .card {
   width: 280px;
   border: 2px solid rgba(128, 128, 128, 0.5);
