@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './PreviewPage.css';
-import { BiChevronRight } from 'react-icons/bi';
+// import { BiChevronRight } from 'react-icons/bi';
 import EditPanel from '../../Components/EditPanel/EditPanel';
-import { IoLogoIonic, IoIosPeople } from 'react-icons/io';
-import { IoLocationSharp } from 'react-icons/io5';
+import { IoLogoIonic } from 'react-icons/io';
+// IoIosPeople
+// import { IoLocationSharp } from 'react-icons/io5';
 import { BsPeopleCircle } from 'react-icons/bs';
-import { FaRegBookmark } from 'react-icons/fa';
-import { TiArrowBackOutline } from 'react-icons/ti';
+// import { FaRegBookmark } from 'react-icons/fa';
+// import { TiArrowBackOutline } from 'react-icons/ti';
 import LI from './LI.png';
 const PreviewPage = ({ event, setEvent }) => {
   const [editPage, setEditPage] = useState(0);
