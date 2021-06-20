@@ -5,7 +5,7 @@ import EditPanel from '../../Components/EditPanel/EditPanel';
 import { IoLogoIonic, IoIosPeople } from 'react-icons/io';
 // IoIosPeople
 import { IoLocationSharp } from 'react-icons/io5';
-import { BsPeopleCircle } from 'react-icons/bs';
+import { BsPeopleCircle, BsBookmark } from 'react-icons/bs';
 // import { FaRegBookmark } from 'react-icons/fa';
 import { TiArrowBackOutline } from 'react-icons/ti';
 import LI from './LI.png';
@@ -284,6 +284,7 @@ const PreviewPage = ({ event, setEvent }) => {
                     </div>
                     <div className='footer'>
                       {/* <FaRegBookmark className='bookmark' /> */}
+                      <BsBookmark className='bookmark' />
                       <TiArrowBackOutline className='back-arr' />
                       <p>Learn More</p>
                     </div>
