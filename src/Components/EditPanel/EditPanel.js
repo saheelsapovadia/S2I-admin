@@ -17,8 +17,6 @@ const EditPanel = ({
   setSpeaker,
   speakerPic,
   setSpeakerPic,
-  agenda,
-  setAgenda,
 }) => {
   const [pageNo, setPageNo] = useState(0);
   console.log(pageNo);
@@ -135,12 +133,7 @@ const EditPanel = ({
           setSpeaker={setSpeaker}
         />
       ) : pageNo == 4 ? (
-        <Agenda
-          setPageNo={setPageNo}
-          setPhoto={setPhoto}
-          agenda={agenda}
-          setAgenda={setAgenda}
-        />
+        <Agenda setPageNo={setPageNo} setPhoto={setPhoto} />
       ) : pageNo == 7 ? (
         <FeaturedJobs setPageNo={setPageNo} setPhoto={setPhoto} />
       ) : (
