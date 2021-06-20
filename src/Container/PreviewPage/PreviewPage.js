@@ -284,7 +284,7 @@ const PreviewPage = ({ event, setEvent }) => {
                     </div>
                     <div className='footer'>
                       {/* <FaRegBookmark className='bookmark' /> */}
-                      {/* <TiArrowBackOutline className='back-arr' /> */}
+                      <TiArrowBackOutline className='back-arr' />
                       <p>Learn More</p>
                     </div>
                   </div>
