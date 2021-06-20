@@ -14,6 +14,7 @@ const PreviewPage = ({ event, setEvent }) => {
   const [url, setUrl] = useState('cover4.jpg');
   const [speakerPic, setSpeakerPic] = useState(null);
   const [speaker, setSpeaker] = useState([]);
+  const [agenda, setAgenda] = useState([]);
   useEffect(() => {
     if (photo == 1) {
       setUrl('event-photo.jpg');
@@ -54,6 +55,16 @@ const PreviewPage = ({ event, setEvent }) => {
       </div>
     );
   });
+  let agendas = agenda.map((agenda, index) => {
+    return (
+      <div>
+        <p>{agenda.name}</p>
+        <p>{agenda.startTime}</p>
+        <p>{agenda.endTime}</p>
+      </div>
+    );
+  });
+  console.log(agenda);
   return (
     <>
       <div className='p-container'>
@@ -66,6 +77,8 @@ const PreviewPage = ({ event, setEvent }) => {
           setSpeakerPic={setSpeakerPic}
           speaker={speaker}
           setSpeaker={setSpeaker}
+          agenda={agenda}
+          setAgenda={setAgenda}
         />
         <div className='preview'>
           <div className='container-pre'>
@@ -117,59 +130,97 @@ const PreviewPage = ({ event, setEvent }) => {
               <hr className='hh' />
               <div className='d3'>
                 <p>Speakers</p>
-                {speakers}
-                <div className='speaker'>
-                  <div className='speaker-pic'>
-                    <BsPeopleCircle className='ic' />
-                  </div>
-                  <div className='speaker-bio'>
-                    <p className='name'>Speaker name</p>
-                    <div className='sub'>
-                      <p>Job title @ Jumpstart </p>
+                {speaker.length > 0 ? (
+                  <>{speakers}</>
+                ) : (
+                  <>
+                    <div className='speaker'>
+                      <div className='speaker-pic'>
+                        <BsPeopleCircle className='ic' />
+                      </div>
+                      <div className='speaker-bio'>
+                        <p className='name'>Speaker name</p>
+                        <div className='sub'>
+                          <p>Job title @ Jumpstart </p>
 
-                      <img className='LI' src={LI} />
+                          <img className='LI' src={LI} />
+                        </div>
+                        <p>
+                          Use this section to give details about your event.
+                          What it will be about? What attendees learn?
+                          <br />
+                          <br />
+                          Well organized and easy to understand Web building
+                          tutorials with lots of examples of how to use HTML,
+                          CSS, JavaScript, SQL, Python, PHP, Bootstrap, Java,
+                          ...
+                        </p>
+                      </div>
                     </div>
-                    <p>
-                      Use this section to give details about your event. What it
-                      will be about? What attendees learn?
-                      <br />
-                      <br />
-                      Well organized and easy to understand Web building
-                      tutorials with lots of examples of how to use HTML, CSS,
-                      JavaScript, SQL, Python, PHP, Bootstrap, Java, ...
-                    </p>
-                  </div>
-                </div>
-                <div className='speaker'>
-                  <div className='speaker-pic'>
-                    <BsPeopleCircle className='ic' />
-                  </div>
-                  <div className='speaker-bio'>
-                    <p className='name'>Speaker name</p>
-                    <div className='sub'>
-                      <p>Job title @ Jumpstart </p>
+                    <div className='speaker'>
+                      <div className='speaker-pic'>
+                        <BsPeopleCircle className='ic' />
+                      </div>
+                      <div className='speaker-bio'>
+                        <p className='name'>Speaker name</p>
+                        <div className='sub'>
+                          <p>Job title @ Jumpstart </p>
 
-                      <img className='LI' src={LI} />
+                          <img className='LI' src={LI} />
+                        </div>
+                        <p>
+                          Use this section to give details about your event.
+                          What it will be about? What attendees learn?
+                          <br />
+                          <br />
+                          Well organized and easy to understand Web building
+                          tutorials with lots of examples of how to use HTML,
+                          CSS, JavaScript, SQL, Python, PHP, Bootstrap, Java,
+                          ...
+                        </p>
+                      </div>
                     </div>
-                    <p>
-                      Use this section to give details about your event. What it
-                      will be about? What attendees learn?
-                      <br />
-                      <br />
-                      Well organized and easy to understand Web building
-                      tutorials with lots of examples of how to use HTML, CSS,
-                      JavaScript, SQL, Python, PHP, Bootstrap, Java, ...
-                    </p>
-                  </div>
-                </div>
+                  </>
+                )}
               </div>
               <hr className='hh' />
               <div className='d4'>
                 <p>Agenda</p>
+                {agenda.length == 0 ? (
+                  <>
+                    <div className='head'>
+                      <p>Aug 17, 2020</p>
+                      <p>Start Time</p>
+                      <p>End Time</p>
+                    </div>
+                    <div>
+                      <p>e.g. Introductions</p>
+                      <p>3:00 PM</p>
+                      <p>3:10 PM</p>
+                    </div>
+                    <div>
+                      <p>e.g. Work at Jumpstart</p>
+                      <p>3:10 PM</p>
+                      <p>3:30 PM</p>
+                    </div>
+                    <div>
+                      <p>e.g. Culture at Jumpstart</p>
+                      <p>3:30 PM</p>
+                      <p>3:40 PM</p>
+                    </div>
+                  </>
+                ) : (
+                  <>{agendas}</>
+                )}
               </div>
               <hr className='hh' />
               <div className='d5'>
                 <p>Text block</p>
+                <p>
+                  If there is somethig extra special happening at the event that
+                  is important, add it here!. A few options to brainstorm you're
+                  throwing a hiring event...
+                </p>
               </div>
               <hr className='hh' />
               <div className='d6'>
