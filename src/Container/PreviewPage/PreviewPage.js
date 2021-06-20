@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './PreviewPage.css';
-// import { BiChevronRight } from 'react-icons/bi';
+import { BiChevronRight } from 'react-icons/bi';
 import EditPanel from '../../Components/EditPanel/EditPanel';
-import { IoLogoIonic } from 'react-icons/io';
+import { IoLogoIonic, IoIosPeople } from 'react-icons/io';
 // IoIosPeople
-// import { IoLocationSharp } from 'react-icons/io5';
+import { IoLocationSharp } from 'react-icons/io5';
 import { BsPeopleCircle } from 'react-icons/bs';
-import { FaRegBookmark } from 'react-icons/fa';
+// import { FaRegBookmark } from 'react-icons/fa';
 import { TiArrowBackOutline } from 'react-icons/ti';
 import LI from './LI.png';
 const PreviewPage = ({ event, setEvent }) => {
@@ -270,20 +270,20 @@ const PreviewPage = ({ event, setEvent }) => {
                 <div className='cards'>
                   <div className='card'>
                     <div className='content'>
-                      {/* <IoLogoIonic className='logo' /> */}
+                      <IoLogoIonic className='logo' />
                       <p>Motion Design Intern</p>
                       <p>Jumpstart - Internship</p>
                       <p>
-                        {/* <IoLocationSharp className='location' /> */}
+                        <IoLocationSharp className='location' />
                         San Francisco, CA
                       </p>
                       <div className='header'>
-                        {/* <IoIosPeople className='peop' /> */}
+                        <IoIosPeople className='peop' />
                         <p>81 participants</p>
                       </div>
                     </div>
                     <div className='footer'>
-                      <FaRegBookmark className='bookmark' />
+                      {/* <FaRegBookmark className='bookmark' /> */}
                       <TiArrowBackOutline className='back-arr' />
                       <p>Learn More</p>
                     </div>
