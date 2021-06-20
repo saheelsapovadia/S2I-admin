@@ -266,7 +266,7 @@ const PreviewPage = ({ event, setEvent }) => {
               <hr className='hh' />
               <div className='d7'>
                 <p>Featured jobs</p>
-                <div className='cards'>
+                {/* <div className='cards'>
                   <div className='card'>
                     <div className='content'>
                       <IoLogoIonic className='logo' />
@@ -409,7 +409,7 @@ const PreviewPage = ({ event, setEvent }) => {
                       <p>Learn More</p>
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
               <hr className='hh' />
 
