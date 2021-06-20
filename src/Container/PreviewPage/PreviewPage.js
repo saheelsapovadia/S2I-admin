@@ -6,7 +6,7 @@ import { IoLogoIonic } from 'react-icons/io';
 // IoIosPeople
 // import { IoLocationSharp } from 'react-icons/io5';
 import { BsPeopleCircle } from 'react-icons/bs';
-// import { FaRegBookmark } from 'react-icons/fa';
+import { FaRegBookmark } from 'react-icons/fa';
 import { TiArrowBackOutline } from 'react-icons/ti';
 import LI from './LI.png';
 const PreviewPage = ({ event, setEvent }) => {
@@ -283,7 +283,7 @@ const PreviewPage = ({ event, setEvent }) => {
                       </div>
                     </div>
                     <div className='footer'>
-                      {/* <FaRegBookmark className='bookmark' /> */}
+                      <FaRegBookmark className='bookmark' />
                       <TiArrowBackOutline className='back-arr' />
                       <p>Learn More</p>
                     </div>
