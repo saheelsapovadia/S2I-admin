@@ -289,6 +289,111 @@ const PreviewPage = ({ event, setEvent }) => {
                       <p>Learn More</p>
                     </div>
                   </div>
+                  <div className='card'>
+                    <div className='content'>
+                      <IoLogoIonic className='logo' />
+                      <p>Motion Design Intern</p>
+                      <p>Jumpstart - Internship</p>
+                      <p>
+                        <IoLocationSharp className='location' />
+                        San Francisco, CA
+                      </p>
+                      <div className='header'>
+                        <IoIosPeople className='peop' />
+                        <p>81 participants</p>
+                      </div>
+                    </div>
+                    <div className='footer'>
+                      {/* <FaRegBookmark className='bookmark' /> */}
+                      <BsBookmark className='bookmark' />
+                      <TiArrowBackOutline className='back-arr' />
+                      <p>Learn More</p>
+                    </div>
+                  </div>
+                  <div className='card'>
+                    <div className='content'>
+                      <IoLogoIonic className='logo' />
+                      <p>Motion Design Intern</p>
+                      <p>Jumpstart - Internship</p>
+                      <p>
+                        <IoLocationSharp className='location' />
+                        San Francisco, CA
+                      </p>
+                      <div className='header'>
+                        <IoIosPeople className='peop' />
+                        <p>81 participants</p>
+                      </div>
+                    </div>
+                    <div className='footer'>
+                      {/* <FaRegBookmark className='bookmark' /> */}
+                      <BsBookmark className='bookmark' />
+                      <TiArrowBackOutline className='back-arr' />
+                      <p>Learn More</p>
+                    </div>
+                  </div>
+                  <div className='card'>
+                    <div className='content'>
+                      <IoLogoIonic className='logo' />
+                      <p>Motion Design Intern</p>
+                      <p>Jumpstart - Internship</p>
+                      <p>
+                        <IoLocationSharp className='location' />
+                        San Francisco, CA
+                      </p>
+                      <div className='header'>
+                        <IoIosPeople className='peop' />
+                        <p>81 participants</p>
+                      </div>
+                    </div>
+                    <div className='footer'>
+                      {/* <FaRegBookmark className='bookmark' /> */}
+                      <BsBookmark className='bookmark' />
+                      <TiArrowBackOutline className='back-arr' />
+                      <p>Learn More</p>
+                    </div>
+                  </div>
+                  <div className='card'>
+                    <div className='content'>
+                      <IoLogoIonic className='logo' />
+                      <p>Motion Design Intern</p>
+                      <p>Jumpstart - Internship</p>
+                      <p>
+                        <IoLocationSharp className='location' />
+                        San Francisco, CA
+                      </p>
+                      <div className='header'>
+                        <IoIosPeople className='peop' />
+                        <p>81 participants</p>
+                      </div>
+                    </div>
+                    <div className='footer'>
+                      {/* <FaRegBookmark className='bookmark' /> */}
+                      <BsBookmark className='bookmark' />
+                      <TiArrowBackOutline className='back-arr' />
+                      <p>Learn More</p>
+                    </div>
+                  </div>
+                  <div className='card'>
+                    <div className='content'>
+                      <IoLogoIonic className='logo' />
+                      <p>Motion Design Intern</p>
+                      <p>Jumpstart - Internship</p>
+                      <p>
+                        <IoLocationSharp className='location' />
+                        San Francisco, CA
+                      </p>
+                      <div className='header'>
+                        <IoIosPeople className='peop' />
+                        <p>81 participants</p>
+                      </div>
+                    </div>
+                    <div className='footer'>
+                      {/* <FaRegBookmark className='bookmark' /> */}
+                      <BsBookmark className='bookmark' />
+                      <TiArrowBackOutline className='back-arr' />
+                      <p>Learn More</p>
+                    </div>
+                  </div>
                 </div>
               </div>
               <hr className='hh' />
