@@ -4,10 +4,44 @@ import { IoArrowUpCircleSharp } from 'react-icons/io5';
 import '../Speakers/Speakers.css';
 import '../CoverPhoto/CoverPhoto.css';
 import './Agenda.css';
-const Agenda = ({ setPageNo, setPhoto }) => {
+const Agenda = ({ setPageNo, setPhoto, agenda, setAgenda }) => {
   const select = (e) => {};
   const [change, setChange] = useState(0);
   const [p, setP] = useState(0);
+  const [name, setName] = useState('');
+  const [date, setDate] = useState('');
+  const [startTime, setStartTime] = useState('');
+  const [endTime, setEndTime] = useState('');
+  const handleChange = (e) => {
+    let { name, value } = e.target;
+
+    switch (name) {
+      case 'name':
+        setName(value);
+        break;
+      case 'date':
+        setDate(value);
+        break;
+      case 'startTime':
+        setStartTime(value);
+        break;
+      case 'endTime':
+        setEndTime(value);
+        break;
+    }
+  };
+  const save = (e) => {
+    let c = [
+      ...agenda,
+      {
+        name: name,
+        date: date,
+        startTime: startTime,
+        endTime: endTime,
+      },
+    ];
+    setAgenda(c);
+  };
   return (
     <>
       <div className='return'>
@@ -41,45 +75,44 @@ const Agenda = ({ setPageNo, setPhoto }) => {
             <p className='title-s'>Item name</p>
             <input
               type='text'
-              name='title'
-              //   onChange={handleChange}
+              name='name'
+              onChange={handleChange}
               placeholder='Name'
-              //   value={title}
+              value={name}
             ></input>
           </div>
           <div className='field-content mt'>
             <p className='title-s'>Date</p>
             <input
               type='date'
-              name='title'
-              //   onChange={handleChange}
+              name='date'
+              onChange={handleChange}
               placeholder='Name'
-              //   value={title}
+              value={date}
             ></input>
           </div>
           <div className='timee'>
             <input
               id='te'
               className='st'
-              // value={endTime}
               name='startTime'
               placeholder='Start time'
-
-              // onChange={(e) => {
-              //   handleChange();
-              // }}
+              onChange={(e) => {
+                handleChange(e);
+              }}
+              value={startTime}
               // onClick={() => setShowSuggestions2(true)}
               // // onBlur={() => setShowSuggestions(false)}
             ></input>
             <input
               id='te'
-              // value={endTime}
+              value={endTime}
               className='et'
               name='endTime'
               placeholder='End time'
-              // onChange={(e) => {
-              //   handleChange();
-              // }}
+              onChange={(e) => {
+                handleChange(e);
+              }}
               // onClick={() => setShowSuggestions2(true)}
               // // onBlur={() => setShowSuggestions(false)}
             ></input>
@@ -96,6 +129,7 @@ const Agenda = ({ setPageNo, setPhoto }) => {
             onClick={() => {
               setPhoto(p);
               setChange(0);
+              save();
             }}
           >
             Add

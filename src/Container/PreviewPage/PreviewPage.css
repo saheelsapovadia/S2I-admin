@@ -152,7 +152,7 @@
   position: sticky;
   background-color: white;
   top: 0;
-
+  z-index: 15;
   border-bottom: 2px solid #888;
 }
 .container-pre > .title > p {
@@ -237,7 +237,7 @@
   margin: 0;
 }
 .content-pre > .hh {
-  color: rgba(78, 25, 25, 0.795);
+  color: gainsboro;
   font-size: 0.21px;
 }
 .d2-a {
@@ -308,9 +308,47 @@
   font-size: 14px;
   line-height: 22px;
 }
+.d5,
+.d4,
 .d7,
 .d8 {
   flex-direction: column;
+}
+.d5 > p:nth-child(2) {
+  font-size: 15px;
+}
+.d4 {
+  margin-bottom: 50px;
+}
+.d4 > .head {
+  font-weight: 700;
+  font-size: 15px;
+}
+.d4 > div {
+  display: flex;
+  flex-direction: row;
+  font-size: 14px;
+  font-weight: 500;
+  border-bottom: 2px solid gainsboro;
+}
+.d4 > div:last-child {
+  border-bottom: none;
+}
+
+.d4 > div > p:nth-child(1) {
+  width: 60%;
+}
+
+/* .d4 > .head > p:nth-child(2), */
+.d4 > div > p:nth-child(2) {
+  /* margin-left: auto; */
+  width: 20%;
+}
+/* .d4 > .head > p:nth-child(3), */
+.d4 > div > p:nth-child(3) {
+  /* margin-left: 80px; */
+  width: 20%;
+  /* margin-right: 100px; */
 }
 .cards {
   display: flex;
@@ -322,7 +360,7 @@
   border: 2px solid rgba(128, 128, 128, 0.5);
   border-radius: 5px;
   position: relative;
-  z-index: -99;
+  z-index: 10;
   flex-basis: 280px;
   margin-right: 20px;
   margin-bottom: 20px;
