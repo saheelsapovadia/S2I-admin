@@ -7,7 +7,7 @@ import { IoLogoIonic } from 'react-icons/io';
 // import { IoLocationSharp } from 'react-icons/io5';
 import { BsPeopleCircle } from 'react-icons/bs';
 // import { FaRegBookmark } from 'react-icons/fa';
-// import { TiArrowBackOutline } from 'react-icons/ti';
+import { TiArrowBackOutline } from 'react-icons/ti';
 import LI from './LI.png';
 const PreviewPage = ({ event, setEvent }) => {
   const [editPage, setEditPage] = useState(0);
