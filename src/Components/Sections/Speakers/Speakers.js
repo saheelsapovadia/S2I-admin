@@ -30,7 +30,7 @@ const Speakers = ({
     setPropic(e.target.files[0]);
   };
   useEffect(() => {
-    console.log(propic);
+    // console.log(propic);
     // setUrlS(URL.createObjectURL(propic));
   }, [propic]);
 
@@ -72,8 +72,17 @@ const Speakers = ({
       },
     ];
     setSpeaker(s);
+    setBio('');
+    setName('');
+    setJob('');
+    setChange('');
+    setLinkedin('');
+    setEmail('');
   };
+  const [edit, setEdit] = useState(0);
+
   let speakers = speaker.map((sp, index) => {
+    // console.log(index);
     return (
       <div className='ss'>
         {/* <div className='i'></div> */}
@@ -82,11 +91,49 @@ const Speakers = ({
           <p>{sp.name}</p>
           <p>{sp.job}</p>
         </div>
-        <MdEdit className='edi' />
-        <MdDelete className='del' />
+        <MdEdit
+          className='edi'
+          onClick={() => {
+            setEdit(index);
+            setChange(2);
+            setName(speaker[index].name);
+            setJob(speaker[index].job);
+            setBio(speaker[index].bio);
+            setLinkedin(speaker[index].linkedin);
+            setCompany(speaker[index].company);
+            setEmail(speaker[index].email);
+            setPropic(speaker[index].propic);
+          }}
+        />
+        <MdDelete
+          className='del'
+          onClick={() => {
+            deletee(index);
+          }}
+        />
       </div>
     );
   });
+  const saveEdits = (e) => {
+    let s = [...speaker];
+    s[edit].name = name;
+    s[edit].job = job;
+    s[edit].company = company;
+    s[edit].bio = bio;
+    s[edit].linkedin = linkedin;
+    s[edit].email = email;
+    s[edit].propic = propic;
+    setSpeaker(s);
+  };
+
+  const deletee = (ind) => {
+    let s = [...speaker];
+    let newS = s.filter((sp, index) => {
+      return index != ind;
+    });
+    // console.log(newS);
+    setSpeaker(newS);
+  };
   return (
     <>
       <div className='return'>
@@ -113,7 +160,7 @@ const Speakers = ({
             + Add new speaker
           </div>
         </>
-      ) : (
+      ) : change == 1 ? (
         <>
           <div className='head'>
             <p className='t'>Speakers</p>
@@ -233,7 +280,127 @@ const Speakers = ({
             Save
           </div>
         </>
-      )}
+      ) : change == 2 ? (
+        <>
+          <div className='head'>
+            <p className='t'>Speakers</p>
+          </div>
+          <div className='field-content mt'>
+            <p className='title-s'>Speaker name</p>
+            <input
+              type='text'
+              name='name'
+              onChange={handleChange}
+              placeholder='Name'
+              value={name}
+            ></input>
+          </div>
+          <div className='field-content mt'>
+            <p className='title-s'>Job title</p>
+            <input
+              type='text'
+              name='title'
+              onChange={handleChange}
+              placeholder='Title'
+              value={job}
+            ></input>
+          </div>
+          <div className='field-content mt'>
+            <p className='title-s'>
+              Works at <span>(Optional)</span>
+            </p>
+            <input
+              type='text'
+              name='company'
+              onChange={handleChange}
+              placeholder='Company'
+              value={company}
+            ></input>
+          </div>
+          <div className='field-content mt'>
+            <p className='title-s'>
+              Speaker bio <span>(Optional)</span>
+            </p>
+            <input
+              type='text'
+              name='bio'
+              onChange={handleChange}
+              placeholder='Say a little about the speaker '
+              value={bio}
+            ></input>
+          </div>
+          <div className='field-content mt'>
+            <p className='title-s'>
+              LinkedIn <span>(Optional)</span>
+            </p>
+            <input
+              type='text'
+              name='linkedin'
+              onChange={handleChange}
+              placeholder='URL'
+              value={linkedin}
+            ></input>
+          </div>
+          <div className='field-content mt'>
+            <p className='title-s'>Email</p>
+            <input
+              type='text'
+              name='email'
+              onChange={handleChange}
+              placeholder='Email'
+              value={email}
+            ></input>
+            <p className='footer'>
+              Calendar reminders and unique zoom links will be sent to speaker's
+              email address
+            </p>
+          </div>
+          <div className='field-content ex'>
+            <p className='title-s'>
+              Profile photo <span>(Optional)</span>
+            </p>
+            <input
+              type='file'
+              id='file'
+              name='file'
+              ref={fileInput}
+              onChange={onFileChange}
+            />
+            <div
+              className='upload'
+              onClick={(e) => {
+                fileInput.current && fileInput.current.click();
+                // onFileUpload();
+              }}
+            >
+              {propic ? (
+                <p>{propic.name}</p>
+              ) : (
+                <>
+                  <IoArrowUpCircleSharp className='icn' />
+                  <p>Upload photo</p>
+                </>
+              )}
+            </div>
+          </div>
+          <div
+            className='save'
+            style={{
+              backgroundColor: 'black',
+              color: 'white',
+              marginTop: '15px',
+              width: '92%',
+            }}
+            onClick={() => {
+              setPhoto(p);
+              setChange(0);
+              saveEdits();
+            }}
+          >
+            Save
+          </div>
+        </>
+      ) : null}
     </>
   );
 };

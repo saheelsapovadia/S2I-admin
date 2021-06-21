@@ -190,13 +190,13 @@ const PreviewPage = ({ event, setEvent }) => {
               <hr className='hh' />
               <div className='d4'>
                 <p>Agenda</p>
+                <div className='head'>
+                  <p>Aug 17, 2020</p>
+                  <p>Start Time</p>
+                  <p>End Time</p>
+                </div>
                 {agenda.length == 0 ? (
                   <>
-                    <div className='head'>
-                      <p>Aug 17, 2020</p>
-                      <p>Start Time</p>
-                      <p>End Time</p>
-                    </div>
                     <div>
                       <p>e.g. Introductions</p>
                       <p>3:00 PM</p>
@@ -220,7 +220,15 @@ const PreviewPage = ({ event, setEvent }) => {
               <hr className='hh' />
               <div className='d5'>
                 <p>Text block</p>
-                <p>{textBlock}</p>
+                {textBlock.length > 0 ? (
+                  <p>{textBlock}</p>
+                ) : (
+                  <p>
+                    If there is somethig extra special happening at the event
+                    that is important, add it here!. A few options to brainstorm
+                    you're throwing a hiring event...
+                  </p>
+                )}
               </div>
               <hr className='hh' />
               <div className='d6'>
