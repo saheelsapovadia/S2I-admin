@@ -9,6 +9,7 @@ import Speakers from '../Sections/Speakers/Speakers';
 import Agenda from '../Sections/Agenda/Agenda';
 import FeaturedJobs from '../Sections/FeaturedJobs/FeaturedJobs';
 import TextBlock from '../Sections/TextBlock/TextBlock';
+import { Details } from '../Details/Details';
 const EditPanel = ({
   setPhoto,
   event,
@@ -36,7 +37,9 @@ const EditPanel = ({
           <div className='details'>
             <div className='title'>
               <p>Details</p>
-              <p className='edit'>Edit details</p>
+              <p className='edit' onClick={() => setPageNo(8)}>
+                Edit details
+              </p>
             </div>
             <div className='field-e'>
               <MdTitle className='t' />
@@ -158,6 +161,8 @@ const EditPanel = ({
           ftJobs={ftJobs}
           setFtJobs={setFtJobs}
         />
+      ) : pageNo == 8 ? (
+        <Details setPageNo={setPageNo} event={event} setEvent={setEvent} />
       ) : (
         ''
       )}
