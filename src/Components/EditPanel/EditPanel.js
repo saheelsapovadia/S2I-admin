@@ -22,6 +22,8 @@ const EditPanel = ({
   setAgenda,
   textBlock,
   setTextBlock,
+  ftJobs,
+  setFtJobs,
 }) => {
   const [pageNo, setPageNo] = useState(0);
   // console.log(pageNo);
@@ -151,7 +153,11 @@ const EditPanel = ({
           setTextBlock={setTextBlock}
         />
       ) : pageNo == 7 ? (
-        <FeaturedJobs setPageNo={setPageNo} setPhoto={setPhoto} />
+        <FeaturedJobs
+          setPageNo={setPageNo}
+          ftJobs={ftJobs}
+          setFtJobs={setFtJobs}
+        />
       ) : (
         ''
       )}

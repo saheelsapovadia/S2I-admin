@@ -30,7 +30,8 @@
   background-color: rgba(209, 206, 206, 0.411);
 }
 .ss:hover .edi,
-.ss:hover .del {
+.ss:hover .del,
+.ss:hover .j {
   display: block;
 }
 .ss > .name > p:first-child {
