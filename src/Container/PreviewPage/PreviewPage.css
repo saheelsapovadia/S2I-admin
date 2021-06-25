@@ -286,6 +286,7 @@
 }
 .speaker-bio {
   padding-left: 10px;
+  width: 158%;
 }
 .speaker-bio > .name {
   font-size: 40px;
