@@ -132,6 +132,24 @@
   padding: 20px 0;
   width: max-content;
 }
+.website-tree {
+  display: flex;
+  flex-direction: row;
+  margin: 4px 0;
+}
+.website-tree > p {
+  margin: 0 3px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  color: rgb(83, 83, 138);
+}
+.website-tree > .parent {
+  color: rgb(6, 6, 53);
+}
+.website-tree > p:hover {
+  color: rgb(47, 47, 185);
+}
 .companies-list > .headerr {
   display: flex;
   flex-direction: row;
@@ -153,6 +171,7 @@
   color: white;
   border-radius: 3px;
   margin: 0;
+  margin-right: 5px;
 }
 .list {
   display: flex;
