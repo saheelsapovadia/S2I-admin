@@ -8,8 +8,8 @@ import './InternshipModal.css';
 import './TextEditor.css';
 import zoom from '../EventsModal/zoom.png';
 import { IoIosArrowBack } from 'react-icons/io';
-import { IoCalendarOutline } from 'react-icons/io5';
-import { FiMonitor } from 'react-icons/fi';
+// import { IoCalendarOutline } from 'react-icons/io5';
+// import { FiMonitor } from 'react-icons/fi';
 import { HiDuplicate } from 'react-icons/hi';
 import { Editor, EditorState, RichUtils } from 'draft-js';
 

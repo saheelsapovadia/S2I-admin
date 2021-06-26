@@ -184,3 +184,35 @@
     width: calc(100% - 20px);
   }
 }
+.rel {
+  position: relative;
+}
+.addcompany {
+  width: 80%;
+  margin: 0 10%;
+}
+.addcompany > input {
+  width: calc(100% - 22px);
+}
+.addcompany > #ex {
+  width: 100%;
+}
+.addcompany > .upload {
+  width: 50%;
+}
+.companypage > .btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 20px;
+}
+.companypage > .btn > button {
+  padding: 8px 12px;
+  text-align: center;
+  color: white;
+  font-size: 16px;
+  background-color: black;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  box-shadow: none;
+}
