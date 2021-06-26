@@ -77,13 +77,13 @@ const AdminPage = ({ event, setEvent }) => {
   useEffect(() => {
     updateInput(input);
   }, [input]);
-  console.log(compList);
+  // console.log(compList);
   let len = compList.length / 4;
-  console.log(len);
+  // console.log(len);
   let companiesList1 = compList.map((coun, index) => {
     // console.log(index);
     if (index < len) {
-      console.log(index);
+      // console.log(index);
       return <p>{coun.name}</p>;
     }
   });
