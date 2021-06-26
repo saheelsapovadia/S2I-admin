@@ -3,13 +3,20 @@ import EventsModal from '../../Components/EventsModal/EventsModal';
 import './AdminPage.css';
 import { AiFillHome } from 'react-icons/ai';
 import { HiOutlineOfficeBuilding } from 'react-icons/hi';
+import InternshipModal from '../../Components/InternshipModal/InternshipModal';
+import axios from 'axios';
 const AdminPage = ({ event, setEvent }) => {
   const [showEventsModal, setShowEventsModal] = useState(false);
+  const [showinternshipModal, setShowInternshipModal] = useState(false);
   const [left, setLeft] = useState();
   const [top, setTop] = useState();
   const [pageNo, setPageNo] = useState(0);
   const openEventsModal = () => {
     setShowEventsModal((prev) => !prev);
+    scrollRecord();
+  };
+  const openInternshipModal = () => {
+    setShowInternshipModal((prev) => !prev);
     scrollRecord();
   };
   const scrollRecord = () => {
@@ -45,6 +52,53 @@ const AdminPage = ({ event, setEvent }) => {
       setPage(p);
     }
   }, [pageNo]);
+  const [keyword, setKeyword] = useState('');
+  const [input, setInput] = useState('');
+  const [compList, setCompList] = useState([]);
+  const [compListDefault, setCompListDefault] = useState([]);
+  useEffect(() => {
+    axios
+      .get(
+        // 'https://restcountries.eu/rest/v2/region/europe?fields=name;capital;currencies'
+        'https://restcountries.eu/rest/v2/all?fields=name;capital'
+      )
+      .then((res) => {
+        setCompList(res.data);
+        setCompListDefault(res.data);
+      });
+  }, []);
+  const updateInput = async (input) => {
+    const filtered = compListDefault.filter((company) => {
+      return company.name.toLowerCase().includes(input.toLowerCase());
+    });
+    setInput(input);
+    setCompList(filtered);
+  };
+  useEffect(() => {
+    updateInput(input);
+  }, [input]);
+  console.log(compList);
+  let len = compList.length / 4;
+  console.log(len);
+  let companiesList1 = compList.map((coun, index) => {
+    // console.log(index);
+    if (index < len) {
+      console.log(index);
+      return <p>{coun.name}</p>;
+    }
+  });
+  let len2 = len * 2;
+  let companiesList2 = compList.map((coun, index) => {
+    if (index > len && index < len2) return <p>{coun.name}</p>;
+  });
+  let len3 = len * 3;
+  let companiesList3 = compList.map((coun, index) => {
+    if (index > len2 && index < len3) return <p>{coun.name}</p>;
+  });
+  let companiesList4 = compList.map((coun, index) => {
+    if (index > len3) return <p>{coun.name}</p>;
+  });
+  console.log(companiesList1);
   return (
     <>
       <EventsModal
@@ -54,8 +108,13 @@ const AdminPage = ({ event, setEvent }) => {
         eventMain={event}
         setEventMain={setEvent}
       />
+      <InternshipModal
+        showModal={showinternshipModal}
+        setShowModal={setShowInternshipModal}
+        scrollRemove={scrollRemove}
+      />
       <div className='a-main'>
-        <div className='right-panel'>
+        <div className='left-panel'>
           <p className='heading'>Jumpstart</p>
           <div className='overview'>
             <p>Overview</p>
@@ -98,7 +157,7 @@ const AdminPage = ({ event, setEvent }) => {
           <div className='my-events internship'>
             <div>
               <p>My Internships</p>
-              <p className='btn' onClick={openEventsModal}>
+              <p className='btn' onClick={openInternshipModal}>
                 Create Internship
               </p>
             </div>
@@ -110,7 +169,7 @@ const AdminPage = ({ event, setEvent }) => {
             </div>
           </div>
         </div>
-        <div className='left-panel'>
+        <div className='right-panel'>
           <div className='topbar'>
             <p>{page.title}</p>
           </div>
@@ -119,24 +178,50 @@ const AdminPage = ({ event, setEvent }) => {
           ) : page.title == 'Companies' ? (
             <>
               <div className='companies-list'>
-                <p>Top Employers</p>
+                <div className='headerr'>
+                  <p>Top Employers</p>
+                  <input
+                    style={{
+                      width: '20rem',
+                      background: '#F2F1F9',
+                      border: 'none',
+                      padding: '0.5rem',
+                      marginLeft: 'auto',
+                      marginRight: '5px',
+                    }}
+                    key='random1'
+                    value={input}
+                    placeholder={'search company'}
+                    onChange={(e) => setInput(e.target.value)}
+                  />
+                  <p className='add-btn'> Add Company</p>
+                </div>
                 <div className='list'>
                   <div className='cols'>
-                    <p>Facebook</p>
+                    {companiesList1}
+                    {/* <p>Facebook</p>
                     <p>
                       Metropolitan Water Reclamation District of Greater Chicago
                     </p>
-                    <p>Apple</p>
+                    <p>Apple</p> */}
                   </div>
                   <div className='cols'>
-                    <p>McHenry County Conservation District</p>
+                    {companiesList2}
+                    {/* <p>McHenry County Conservation District</p>
                     <p>Google</p>
-                    <p>West Michigan Environmental Action Council</p>
+                    <p>West Michigan Environmental Action Council</p> */}
                   </div>
                   <div className='cols'>
-                    <p>Facebook</p>
+                    {companiesList3}
+                    {/* <p>Facebook</p>
+                  <p>Pine Rest Psychological Consultation Center</p>
+                  <p>Apple</p> */}
+                  </div>
+                  <div className='cols'>
+                    {companiesList4}
+                    {/* <p>Facebook</p>
                     <p>Pine Rest Psychological Consultation Center</p>
-                    <p>Apple</p>
+                    <p>Apple</p> */}
                   </div>
                 </div>
               </div>

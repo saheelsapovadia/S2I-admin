@@ -34,22 +34,22 @@
   height: 100vh;
   overflow-y: hidden;
 }
-.right-panel {
+.left-panel {
   width: 280px;
   height: 100vh;
   /* overflow-y: scroll; */
-
   flex-wrap: wrap;
   border-right: 2px solid rgb(95, 94, 94);
   background-color: rgb(20, 13, 13);
   color: white;
 }
-.left-panel {
+.right-panel {
   height: 100vh;
+  overflow-y: scroll;
   width: calc(100% - 280px);
 }
 
-.right-panel > .heading {
+.left-panel > .heading {
   font-weight: 700;
   font-size: 30px;
   padding: 30px;
@@ -132,21 +132,36 @@
   padding: 20px 0;
   width: max-content;
 }
-.companies-list > p:first-child {
+.companies-list > .headerr {
+  display: flex;
+  flex-direction: row;
+}
+.companies-list > .headerr > p:first-child {
   font-weight: 600;
+  font-size: 14px;
+  margin: 5px;
   margin-left: 30px;
+}
+.add-btn {
+  font-size: 13px;
+  cursor: pointer;
+  padding: 6px 6px;
+  background-color: #555;
+  color: white;
+  border-radius: 3px;
 }
 .list {
   display: flex;
   flex-direction: row;
-  flex-flow: row wrap;
+  /* flex-flow: row wrap; */
   margin: 0 30px;
 }
+
 .cols {
-  flex: 1;
+  width: 22%;
   padding: 0 10px;
-  flex-flow: row wrap;
-  flex-basis: 200px;
+  /* flex-flow: row wrap; */
+  /* flex-basis: 30%; */
   /* text-align: center; */
 }
 .cols > p {
@@ -156,4 +171,12 @@
 }
 .cols > p:hover {
   text-decoration: underline;
+}
+@media (max-width: 1000px) {
+  .list {
+    flex-direction: column;
+  }
+  .cols {
+    width: calc(100% - 20px);
+  }
 }
