@@ -108,11 +108,11 @@ const AdminPage = ({ event, setEvent }) => {
         eventMain={event}
         setEventMain={setEvent}
       />
-      <InternshipModal
+      {/* <InternshipModal
         showModal={showinternshipModal}
         setShowModal={setShowInternshipModal}
         scrollRemove={scrollRemove}
-      />
+      /> */}
       <div className='a-main'>
         <div className='left-panel'>
           <p className='heading'>Jumpstart</p>
