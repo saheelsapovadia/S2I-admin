@@ -35,6 +35,37 @@ const CompanyPage = ({}) => {
   useEffect(() => {
     updateInput(input);
   }, [input]);
+  const enterTag = (e) => {
+    if (e.key === 'Enter') {
+      console.log('do validate');
+      let t = [...tags];
+      t.push(e.target.value);
+      setTags(t);
+      setInput('');
+    }
+  };
+  const removeTag = (e) => {
+    let t = [...tags];
+    const { id } = e.target;
+    console.log(id);
+    let newT = t.filter((tag, index) => {
+      return tag !== e.target.id;
+    });
+    console.log(newT);
+    setTags(newT);
+  };
+  const [tags, setTags] = useState([]);
+  let Tags = tags.map((tag, index) => {
+    return (
+      <div className='tag-con'>
+        <p className='tag'>{tag}</p>{' '}
+        <p id={tag} onClick={removeTag}>
+          x
+        </p>
+      </div>
+    );
+  });
+
   // console.log(compList);
   let len = compList.length / 4;
   // console.log(len);
@@ -47,16 +78,16 @@ const CompanyPage = ({}) => {
   });
   let len2 = len * 2;
   let companiesList2 = compList.map((coun, index) => {
-    if (index > len && index < len2) return <p>{coun.name}</p>;
+    if (index >= len && index < len2) return <p>{coun.name}</p>;
   });
   let len3 = len * 3;
   let companiesList3 = compList.map((coun, index) => {
-    if (index > len2 && index < len3) return <p>{coun.name}</p>;
+    if (index >= len2 && index < len3) return <p>{coun.name}</p>;
   });
   let companiesList4 = compList.map((coun, index) => {
     if (index > len3) return <p>{coun.name}</p>;
   });
-  console.log(companiesList1);
+  // console.log(companiesList1);
   const fileInput = useRef(null);
   const [logo, setLogo] = useState(null);
   const onFileChange = (e) => {
@@ -87,6 +118,7 @@ const CompanyPage = ({}) => {
   const _onOrderedClick = () => {
     onEditorChange(RichUtils.toggleBlockType(editorState, 'ordered-list-item'));
   };
+
   return (
     <>
       <div className='website-tree'>
@@ -118,6 +150,7 @@ const CompanyPage = ({}) => {
               key='random1'
               value={input}
               placeholder={'search company'}
+              onKeyDown={enterTag}
               onChange={(e) => setInput(e.target.value)}
             />
             <p
@@ -130,6 +163,7 @@ const CompanyPage = ({}) => {
               Add Company
             </p>
           </div>
+          <div className='tag-list'>{Tags}</div>
           <div className='list'>
             <div className='cols'>
               {companiesList1}

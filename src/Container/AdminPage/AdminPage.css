@@ -235,3 +235,32 @@
   margin-bottom: 10px;
   box-shadow: none;
 }
+.tag-list {
+  margin-left: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: row wrap;
+  width: 300px;
+}
+.tag-con {
+  display: flex;
+  flex-direction: row;
+  border-radius: 30px;
+  background-color: #555;
+}
+.tag-con > p:last-child {
+  /* margin: 0; */
+  margin: 1px 5px;
+  padding: 3px 13px;
+  margin-left: 0px;
+  padding-left: 0;
+  color: white;
+  cursor: pointer;
+}
+.tag {
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 3px 5px;
+  padding: 3px 13px;
+}

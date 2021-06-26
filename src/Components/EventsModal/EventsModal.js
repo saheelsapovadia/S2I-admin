@@ -68,7 +68,7 @@ const EventsModal = ({
     scrollRemove();
     setCurrPage(1);
   };
-
+  const node = useRef();
   const [title, setTitle] = useState('');
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
@@ -243,7 +243,10 @@ const EventsModal = ({
     </div>
   );
   let sug2 = (
-    <div className='preference__modal__suggestions' onBlur={close}>
+    <div
+      className='preference__modal__suggestions'
+      onBlur={() => setShowSuggestions(false)}
+    >
       <span className='' key='1' onClick={OnClick2}>
         10:00pm
       </span>
@@ -276,7 +279,28 @@ const EventsModal = ({
       </span>
     </div>
   );
+  // useEffect(() => {
+  //   // add when mounted
+  //   document.addEventListener('mousedown', handleClick); // return function to be called when unmounted
+  //   return () => {
+  //     document.removeEventListener('mousedown', handleClick);
+  //   };
+  // }, []);
+  // const handleClick = (e) => {
+  //   //e.composedPath().includes(node.current)
+  //   if (nodeCurr.contains(e.target)) {
+  //     // inside click
 
+  //     return;
+  //   } // outside click
+  //   setShowSuggestions(false);
+  //   setShowSuggestions2(false);
+  // };
+  // const [nodeCurr, setNodeCurr] = useState(null);
+  // useEffect(() => {
+  //   setNodeCurr(node.current);
+  //   console.log(node);
+  // }, [node.current]);
   return (
     <>
       {showModal ? (
@@ -362,7 +386,7 @@ const EventsModal = ({
                   onClick={() => setCurrPage(1)}
                 />
                 <p>Event Details</p>
-                <div className='a-wrapper page2'>
+                <div className='a-wrapper page2' ref={node}>
                   <div className='field'>
                     <div className='img'>
                       <MdTitle className='t' />
@@ -409,8 +433,10 @@ const EventsModal = ({
                             name='startTime'
                             placeholder='Start time'
                             onChange={handleChange}
-                            onClick={() => setShowSuggestions(true)}
-                            // onBlur={() => setShowSuggestions(false)}
+                            onClick={() => {
+                              setShowSuggestions(true);
+                              // handleClick();
+                            }}
                           ></input>
                           {showSuggestions ? sug : ''}
                         </div>
@@ -432,7 +458,10 @@ const EventsModal = ({
                             onChange={(e) => {
                               handleChange();
                             }}
-                            onClick={() => setShowSuggestions2(true)}
+                            onClick={() => {
+                              setShowSuggestions2(true);
+                              // handleClick();
+                            }}
                             // onBlur={() => setShowSuggestions(false)}
                           ></input>
                           {showSuggestions2 ? sug2 : ''}
