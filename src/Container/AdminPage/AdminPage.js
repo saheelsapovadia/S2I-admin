@@ -6,38 +6,166 @@ import { HiOutlineOfficeBuilding } from 'react-icons/hi';
 import InternshipModal from '../../Components/InternshipModal/InternshipModal';
 import axios from 'axios';
 import { IoIosArrowBack } from 'react-icons/io';
-import { IoArrowUpCircleSharp } from 'react-icons/io5';
+import { IoArrowUpCircleSharp, IoCloseCircleSharp } from 'react-icons/io5';
 import { Editor, EditorState, RichUtils } from 'draft-js';
 const CompanyPage = ({}) => {
   const [page, setPage] = useState('list');
   const [keyword, setKeyword] = useState('');
   const [input, setInput] = useState('');
-  const [compList, setCompList] = useState([]);
-  const [compListDefault, setCompListDefault] = useState([]);
+  let data = [
+    {
+      id: 1,
+      companyName: 'Reliance',
+      companyLocation: ['Mumbai', 'Bangalore', 'Jamnagar', 'Ahmedabad'],
+      companyDomain: ['Petrochemicals', 'Telecommunications', 'Retail', 'IT'],
+    },
+    {
+      id: 2,
+      companyName: 'Flipkart',
+      companyLocation: ['Mumbai', 'Bangalore', 'Ahmedabad'],
+      companyDomain: ['Retail', 'IT'],
+    },
+    {
+      id: 3,
+      companyName: 'Myntra',
+      companyLocation: ['Bangalore', 'Ahmedabad'],
+      companyDomain: ['Retail', 'IT'],
+    },
+    {
+      id: 4,
+      companyName: 'Infosys',
+      companyLocation: ['Mumbai', 'Bangalore', 'Pune'],
+      companyDomain: ['Telecommunications', 'IT'],
+    },
+    {
+      id: 5,
+      companyName: 'Tata',
+      companyLocation: ['Mumbai', 'Bangalore', 'Ahmedabad', 'Pune'],
+      companyDomain: ['Retail', 'IT', 'Power', 'Construction', 'Coal'],
+    },
+    {
+      id: 6,
+      companyName: 'Flipkart',
+      companyLocation: ['Mumbai', 'Bangalore', 'Ahmedabad'],
+      companyDomain: ['Retail', 'IT'],
+    },
+    {
+      id: 7,
+      companyName: 'Airtel',
+      companyLocation: ['Mumbai', 'Bangalore', 'Ahmedabad', 'Gurgaon'],
+      companyDomain: ['Retail', 'IT', 'Telecommunications'],
+    },
+    {
+      id: 8,
+      companyName: 'Atel',
+      companyLocation: ['Mumbai', 'Ahmedabad', 'Gurgaon'],
+      companyDomain: ['Retail', 'IT', 'Telecommunications'],
+    },
+    {
+      id: 9,
+      companyName: 'tel',
+      companyLocation: ['Mumbai', 'Bangalore', 'Ahmedabad', 'Gurgaon'],
+      companyDomain: ['Retail', 'Power', 'Telecommunications'],
+    },
+    {
+      id: 10,
+      companyName: 'Jabong',
+      companyLocation: ['Mumbai', 'Bangalore', 'Hyderabad', 'Gurgaon'],
+      companyDomain: ['IT'],
+    },
+    {
+      id: 11,
+      companyName: 'Jtel',
+      companyLocation: ['Mumbai', 'Bangalore', 'Ahmedabad', 'Gurgaon'],
+      companyDomain: ['Retail', 'IT', 'Telecommunications'],
+    },
+    {
+      id: 12,
+      companyName: 'Rel',
+      companyLocation: ['Mumbai', 'Ahmedabad', 'Gurgaon'],
+      companyDomain: ['Retail', 'IT', 'Telecommunications'],
+    },
+    {
+      id: 13,
+      companyName: 'Amazon',
+      companyLocation: ['Mumbai', 'Bangalore', 'Ahmedabad', 'Gurgaon'],
+      companyDomain: ['Retail', 'Power', 'Telecommunications'],
+    },
+    {
+      id: 14,
+      companyName: 'Nott',
+      companyLocation: ['Mumbai', 'Bangalore', 'Hyderabad', 'Gurgaon'],
+      companyDomain: ['Retail', 'IT'],
+    },
+  ];
+  const [compList, setCompList] = useState(data);
+  const [compListDefault, setCompListDefault] = useState(data);
+  // useEffect(() => {
+  //   axios
+  //     .get(
+  //       // 'https://restcountries.eu/rest/v2/region/europe?fields=name;capital;currencies'
+  //       'https://restcountries.eu/rest/v2/all?fields=name;capital'
+  //     )
+  //     .then((res) => {
+  //       setCompList(res.data);
+  //       setCompListDefault(res.data);
+  //     });
+  // }, []);
+  // useEffect(() => {
+  //   console.log(data);
+  //   setCompList(data);
+  //   setCompListDefault(data);
+  //   // console.log('setting compList...');
+  // }, []);
   useEffect(() => {
-    axios
-      .get(
-        // 'https://restcountries.eu/rest/v2/region/europe?fields=name;capital;currencies'
-        'https://restcountries.eu/rest/v2/all?fields=name;capital'
-      )
-      .then((res) => {
-        setCompList(res.data);
-        setCompListDefault(res.data);
-      });
-  }, []);
+    console.log(compList);
+  }, [compList]);
+
   const updateInput = async (input) => {
-    const filtered = compListDefault.filter((company) => {
-      return company.name.toLowerCase().includes(input.toLowerCase());
-    });
-    setInput(input);
-    setCompList(filtered);
+    // console.log('filtering...');
+    // const filtered = compListDefault.filter((company) => {
+    //   let flag = false;
+    //   // console.log('retruning..');
+    //   if (company.companyName.toLowerCase().includes(input.toLowerCase())) {
+    //     flag = true;
+    //     console.log(company.companyName);
+    //   }
+    //   for (var location in company.companyLocation) {
+    //     if (location.toLowerCase().includes(input.toLowerCase())) {
+    //       flag = true;
+    //       console.log('location found:' + location);
+    //     }
+    //   }
+    //   for (var domain in company.companyDomain) {
+    //     if (domain.toLowerCase().includes(input.toLowerCase())) {
+    //       flag = true;
+    //       console.log('domain found:' + domain);
+    //     }
+    //   }
+    //   //     company.companyLocation.filter((location) => {
+    //   //       return location.toLowerCase().includes(input.toLowerCase());
+    //   //  else if (
+    //   //     company.companyDomain.filter((Domain) => {
+    //   //       return Domain.toLowerCase().includes(input.toLowerCase());
+    //   //     })
+    //   //   ) {
+    //   //     flag = true;
+    //   //     console.log(flag);
+    //   //     return flag;
+    //   //   }
+    //   return flag;
+    // });
+    // setInput(input);
+    // setCompList(filtered);
   };
-  useEffect(() => {
-    updateInput(input);
-  }, [input]);
+
+  // useEffect(() => {
+  //   updateInput(input);
+  // }, [input]);
+
   const enterTag = (e) => {
     if (e.key === 'Enter') {
-      console.log('do validate');
+      console.log('Tag added..');
       let t = [...tags];
       t.push(e.target.value);
       setTags(t);
@@ -46,6 +174,7 @@ const CompanyPage = ({}) => {
   };
   const removeTag = (e) => {
     let t = [...tags];
+    console.log('Tag removed..', e.target.id);
     const { id } = e.target;
     console.log(id);
     let newT = t.filter((tag, index) => {
@@ -54,14 +183,118 @@ const CompanyPage = ({}) => {
     console.log(newT);
     setTags(newT);
   };
+  // const [List, setList] = useState(compList);
+  // useEffect(() => {
+  //   console.log('list:', List);
+  // }, [List]);
   const [tags, setTags] = useState([]);
+  const tagFilter = () => {
+    let List = [...compListDefault];
+    console.log('compList: ', compList);
+    // setList(compList);
+    console.log('New list: ', List);
+    console.log(tags.length);
+
+    if (tags.length == 0) {
+      console.log('setting default...');
+      setCompList(compListDefault);
+    } else {
+      console.log('else...');
+      var i = 0;
+      for (var tag in tags) {
+        console.log('index: ' + i, tags[tag]);
+        i++;
+        let filteredResults = [];
+        for (var company in List) {
+          let flag = false;
+          console.log('Current company: ', List[company]);
+          if (
+            List[company].companyName.toLowerCase() == tags[tag].toLowerCase()
+          ) {
+            console.log(
+              'Tag:',
+              tags[tag],
+              'companyName:',
+              List[company].companyName.toLowerCase()
+            );
+            flag = true;
+            console.log(List[company].companyName);
+            filteredResults.push(List[company]);
+            console.log('same name found', 'filteredResults', filteredResults);
+            continue;
+          }
+          for (var location in List[company].companyLocation) {
+            console.log(
+              'Tag:',
+              tags[tag],
+              'companyLocation:',
+              List[company].companyLocation[location].toLowerCase()
+            );
+            if (
+              List[company].companyLocation[location].toLowerCase() ==
+              tags[tag].toLowerCase()
+            ) {
+              flag = true;
+              console.log(
+                'location found:' + List[company].companyLocation[location]
+              );
+              break;
+            }
+          }
+          if (flag) {
+            filteredResults = [...filteredResults, List[company]];
+            console.log('filteredResults', filteredResults);
+            continue;
+          }
+          console.log('check before DOMAIN:', flag);
+          for (var domain in List[company].companyDomain) {
+            console.log(
+              'Tag:',
+              tags[tag],
+              'companyDomain:',
+              List[company].companyDomain[domain].toLowerCase()
+            );
+            if (
+              List[company].companyDomain[domain].toLowerCase() ==
+              tags[tag].toLowerCase()
+            ) {
+              flag = true;
+              console.log(
+                'domain found:' + List[company].companyDomain[domain]
+              );
+              break;
+            }
+          }
+          if (flag) {
+            filteredResults = [...filteredResults, List[company]];
+            console.log('filteredResults', filteredResults);
+            continue;
+          }
+        }
+        console.log('final filteredResults', filteredResults);
+        if (filteredResults) {
+          List = filteredResults;
+        } else {
+        }
+        console.log('updated list: ', List);
+      }
+      setCompList(List);
+    }
+  };
+  useEffect(() => {
+    console.log('Executing the tagFilter..');
+    tagFilter();
+    console.log('tags', tags);
+  }, [tags]);
+
   let Tags = tags.map((tag, index) => {
     return (
       <div className='tag-con'>
         <p className='tag'>{tag}</p>{' '}
-        <p id={tag} onClick={removeTag}>
+        {/* <p id={tag} onClick={removeTag}>
           x
-        </p>
+        </p> */}
+        <IoCloseCircleSharp className='close-x' id={tag} onClick={removeTag} />
       </div>
     );
   });
@@ -73,19 +306,19 @@ const CompanyPage = ({}) => {
     // console.log(index);
     if (index < len) {
       // console.log(index);
-      return <p>{coun.name}</p>;
+      return <p>{coun.companyName}</p>;
     }
   });
   let len2 = len * 2;
   let companiesList2 = compList.map((coun, index) => {
-    if (index >= len && index < len2) return <p>{coun.name}</p>;
+    if (index >= len && index < len2) return <p>{coun.companyName}</p>;
   });
   let len3 = len * 3;
   let companiesList3 = compList.map((coun, index) => {
-    if (index >= len2 && index < len3) return <p>{coun.name}</p>;
+    if (index >= len2 && index < len3) return <p>{coun.companyName}</p>;
   });
   let companiesList4 = compList.map((coun, index) => {
-    if (index > len3) return <p>{coun.name}</p>;
+    if (index > len3) return <p>{coun.companyName}</p>;
   });
   // console.log(companiesList1);
   const fileInput = useRef(null);
