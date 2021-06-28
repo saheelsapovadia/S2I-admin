@@ -6,7 +6,7 @@ import { HiOutlineOfficeBuilding } from 'react-icons/hi';
 import InternshipModal from '../../Components/InternshipModal/InternshipModal';
 import axios from 'axios';
 import { IoIosArrowBack } from 'react-icons/io';
-import { IoArrowUpCircleSharp } from 'react-icons/io5';
+import { IoArrowUpCircleSharp, IoCloseCircle } from 'react-icons/io5';
 import { Editor, EditorState, RichUtils } from 'draft-js';
 const CompanyPage = ({}) => {
   const [page, setPage] = useState('list');
@@ -294,7 +294,7 @@ const CompanyPage = ({}) => {
         {/* <p id={tag} onClick={removeTag}>
           x
         </p> */}
-        {/* <IoCloseCircleSharp className='close-x' id={tag} onClick={removeTag} /> */}
+        <IoCloseCircle className='close-x' id={tag} onClick={removeTag} />
       </div>
     );
   });
