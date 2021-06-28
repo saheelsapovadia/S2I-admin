@@ -294,7 +294,9 @@ const CompanyPage = ({}) => {
         {/* <p id={tag} onClick={removeTag}>
           x
         </p> */}
+        {/* <div onClick={removeTag}> */}
         <IoCloseCircle className='close-x' id={tag} onClick={removeTag} />
+        {/* </div> */}
       </div>
     );
   });
