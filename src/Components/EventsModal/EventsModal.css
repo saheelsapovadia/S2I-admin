@@ -139,16 +139,16 @@
   width: 8%;
 }
 .field-content {
-  width: 84%;
-  margin-right: 10%;
+  width: 100%;
+  /* margin-right: 10%; */
 }
 @media (max-width: 415px) {
   .field-content {
-    margin-left: 2%;
+    /* margin-left: 2%; */
   }
 }
 .adjust {
-  width: 86%;
+  /* width: 86%; */
   margin-right: 0%;
 }
 .field > .img > .t {
@@ -169,12 +169,9 @@
   color: gray;
   font-size: 12px;
 }
-#fc {
-  margin-right: 6%;
-  width: 87%;
-}
+
 #ex {
-  width: 100%;
+  width: 100% !important;
   background-color: white;
 }
 #datepicker {
@@ -192,7 +189,7 @@
   font-size: 13px;
   border: 2px solid rgba(177, 173, 173, 0.315);
   border-radius: 5px;
-  width: 100%;
+  width: calc(100% - 22px);
   caret-color: #48ccac;
   outline: none;
   transition: all 0.1s ease-in;
@@ -202,12 +199,14 @@
   flex-direction: row;
   width: 100%;
 }
-.r > input,
-.prefSearch {
-  width: 43%;
+.r > input {
+  width: calc(48% - 22px);
 }
 .prefSearch {
+  width: 48%;
   margin: 0;
+  margin-left: auto;
+  position: relative;
 }
 .r > select {
   width: 48%;
@@ -256,10 +255,10 @@ input[type='date']::-webkit-calendar-picker-indicator {
   overflow-y: scroll;
   height: 300px;
   cursor: pointer;
-  z-index: 0.5;
+  z-index: 5;
   font-size: 0.875rem;
   font-weight: 600;
-  width: 34%;
+  width: 100%;
   /* margin-left: 0.6rem; */
   background-color: #fff;
   border: 1px solid #ddd;

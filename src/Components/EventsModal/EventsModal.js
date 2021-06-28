@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { MdClose, MdTitle, MdLockOutline, MdLaptopMac } from 'react-icons/md';
 import '../Modal/Modal.css';
 import './EventsModal.css';
-
+import { useDetectClickOutside } from 'react-detect-click-outside';
 import zoom from './zoom.png';
 import { IoIosArrowBack } from 'react-icons/io';
 import { IoCalendarOutline } from 'react-icons/io5';
@@ -68,6 +68,9 @@ const EventsModal = ({
     scrollRemove();
     setCurrPage(1);
   };
+  useEffect(() => {
+    window.addEventListener('scroll', close);
+  }, []);
   const node = useRef();
   const [title, setTitle] = useState('');
   const [startDate, setStartDate] = useState('');
@@ -205,11 +208,19 @@ const EventsModal = ({
 
   const close = () => {
     setShowSuggestions(false);
+    setShowSuggestions2(false);
+    console.log('closing...');
+  };
+  const open = () => {
+    setShowSuggestions(true);
+    console.log('input click open...');
   };
   // const
-
+  const inputRef = useDetectClickOutside({ onTriggered: open });
+  const ref = useDetectClickOutside({ onTriggered: close });
+  const ref1 = useDetectClickOutside({ onTriggered: close });
   let sug = (
-    <div className='preference__modal__suggestions' onBlur={close}>
+    <div className='preference__modal__suggestions' ref={ref} onBlur={close}>
       <span className='' key='1' onClick={OnClick1}>
         10:00pm
       </span>
@@ -245,7 +256,7 @@ const EventsModal = ({
   let sug2 = (
     <div
       className='preference__modal__suggestions'
-      onBlur={() => setShowSuggestions(false)}
+      // onBlur={() => setShowSuggestions(false)}
     >
       <span className='' key='1' onClick={OnClick2}>
         10:00pm
@@ -386,7 +397,7 @@ const EventsModal = ({
                   onClick={() => setCurrPage(1)}
                 />
                 <p>Event Details</p>
-                <div className='a-wrapper page2' ref={node}>
+                <div className='a-wrapper page2' onScroll={close}>
                   <div className='field'>
                     <div className='img'>
                       <MdTitle className='t' />
@@ -424,6 +435,7 @@ const EventsModal = ({
                           name='startDate'
                           placeholder='Start Date'
                           onChange={handleChange}
+
                           // onClick={setDatepicker()}
                         ></input>
                         <div className='prefSearch'>
@@ -432,11 +444,23 @@ const EventsModal = ({
                             value={startTime}
                             name='startTime'
                             placeholder='Start time'
-                            onChange={handleChange}
-                            onClick={() => {
+                            ref={inputRef}
+                            onChange={(e) => {
                               setShowSuggestions(true);
+                              console.log('opening...');
+                              handleChange(e);
                               // handleClick();
                             }}
+                            onClick={() => {
+                              // setShowSuggestions(true);
+                              open();
+                              console.log('opening...');
+                              // handleClick();
+                            }}
+                            // onFocus={() => {
+                            //   setShowSuggestions(true);
+                            //   // handleClick();
+                            // }}
                           ></input>
                           {showSuggestions ? sug : ''}
                         </div>
@@ -456,7 +480,8 @@ const EventsModal = ({
                             name='endTime'
                             placeholder='End time'
                             onChange={(e) => {
-                              handleChange();
+                              setShowSuggestions2(true);
+                              handleChange(e);
                             }}
                             onClick={() => {
                               setShowSuggestions2(true);
