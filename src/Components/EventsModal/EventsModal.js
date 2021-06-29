@@ -434,7 +434,7 @@ const EventsModal = ({
               </div>
             ) : currPage == 1 ? (
               <>
-                <div className='container'>
+                {/* <div className='container'>
                   <IoIosArrowBack
                     className='back-icon'
                     onClick={() => setCurrPage(0)}
@@ -447,26 +447,9 @@ const EventsModal = ({
                   <div className='a-wrapper' style={{ marginTop: '24px' }}>
                     <p className='wrapper-t'>Upcoming events</p>
                     {eventsUI}
-                    {/* <div
-                      className='event-card'
-                      onClick={() => {
-                        setCurrPage(1);
-                      }}
-                    >
-                      <div className='card-img'>
-                        
-                        <HiDuplicate
-                          className='event-icon rev'
-                          style={{ color: 'orange' }}
-                        />
-                      </div>
-                      <div className='card-content'>
-                        <p className='card-title'>AfroTech</p>
-                        <p className='card-info'>174 Attending 12PM Webinar</p>
-                      </div>
-                    </div> */}
+                    
                   </div>
-                </div>
+                </div> */}
               </>
             ) : currPage == 2 ? (
               <div className='container'>
