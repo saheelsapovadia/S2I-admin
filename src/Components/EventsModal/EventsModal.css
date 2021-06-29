@@ -7,11 +7,17 @@
   flex-direction: column;
   align-items: center;
 }
-.container > p {
+.container > p:nth-child(2),
+.container > p:nth-child(1) {
   margin-top: 60px;
   font-size: 25px;
   font-weight: 600;
   color: rgb(39, 39, 41);
+}
+.container > .sub {
+  color: rgb(165, 164, 164);
+  font-size: 13px;
+  margin: 0;
 }
 .a-wrapper {
   display: flex;

@@ -37,15 +37,15 @@ const EventsModal = ({
   showModal,
   setShowModal,
   scrollRemove,
-  eventMain,
-  setEventMain,
+  eventsMain,
+  setEventsMain,
 }) => {
   const modalRef = useRef();
   const closeModal = (e) => {
     if (modalRef.current === e.target) {
       setShowModal(false);
       scrollRemove();
-      setCurrPage(1);
+      setCurrPage(0);
     }
   };
   const keyPress = useCallback(
@@ -53,7 +53,7 @@ const EventsModal = ({
       if (e.key === 'Escape' && showModal) {
         setShowModal(false);
         scrollRemove();
-        setCurrPage(1);
+        setCurrPage(0);
         console.log('I pressed');
       }
     },
@@ -66,7 +66,7 @@ const EventsModal = ({
   const closeEditProfileModal = () => {
     setShowModal((prev) => !prev);
     scrollRemove();
-    setCurrPage(1);
+    setCurrPage(0);
   };
   useEffect(() => {
     window.addEventListener('scroll', close);
@@ -81,10 +81,10 @@ const EventsModal = ({
   const [host, setHost] = useState('');
   const [privacy, setPrivacy] = useState('');
   const [meetLink, setMeetLink] = useState('');
-  const [currPage, setCurrPage] = useState(1);
-  const onFormClick = (e) => {
-    setCurrPage(currPage + 1);
-  };
+  const [currPage, setCurrPage] = useState(0);
+  // const onFormClick = (e) => {
+  //   setCurrPage(currPage + 1);
+  // };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -159,8 +159,12 @@ const EventsModal = ({
       meetLink: meetLink,
       privacy: privacy,
     };
-    setEventMain(newEvent);
-    history.push('/eventpreview');
+    let eventArr = [...eventsMain];
+    eventArr.push(newEvent);
+    console.log('evntArr', eventArr.length - 1);
+    console.log('history', history);
+    setEventsMain(eventArr);
+    history.push({ pathname: '/eventpreview/' + (eventArr.length - 1) });
   };
 
   const [showSuggestions, setShowSuggestions] = useState(false);
@@ -209,11 +213,11 @@ const EventsModal = ({
   const close = () => {
     setShowSuggestions(false);
     setShowSuggestions2(false);
-    console.log('closing...');
+    // console.log('closing...');
   };
   const open = () => {
     setShowSuggestions(true);
-    console.log('input click open...');
+    // console.log('input click open...');
   };
   // const
   const inputRef = useDetectClickOutside({ onTriggered: open });
@@ -290,6 +294,34 @@ const EventsModal = ({
       </span>
     </div>
   );
+
+  let eventsUI = eventsMain.map((eventMain) => {
+    return (
+      <>
+        <div
+          className='event-card'
+          onClick={() => {
+            setCurrPage(1);
+          }}
+        >
+          <div className='card-img'>
+            {/* <img src={calender} /> */}
+            <HiDuplicate
+              className='event-icon rev'
+              style={{ color: 'orange' }}
+            />
+          </div>
+          <div className='card-content'>
+            <p className='card-title'>{eventMain.title}</p>
+            <p className='card-info'>
+              174 Attending {eventMain.startTime} {eventMain.host}
+            </p>
+          </div>
+        </div>
+      </>
+    );
+  });
+
   // useEffect(() => {
   //   // add when mounted
   //   document.addEventListener('mousedown', handleClick); // return function to be called when unmounted
@@ -329,12 +361,17 @@ const EventsModal = ({
               aria-label='Close modal'
               onClick={() => closeEditProfileModal()}
             />
-            {currPage == 1 ? (
+            {currPage == 0 ? (
               <div className='container'>
                 <p>Create an event</p>
                 <div className='a-wrapper' style={{ marginTop: '24px' }}>
                   <p className='wrapper-t'>Quick Start</p>
-                  <div className='event-card'>
+                  <div
+                    className='event-card'
+                    onClick={() => {
+                      setCurrPage(1);
+                    }}
+                  >
                     <div className='card-img'>
                       {/* <img src={calender} /> */}
                       <HiDuplicate
@@ -353,7 +390,12 @@ const EventsModal = ({
                 </div>
                 <div className='a-wrapper'>
                   <p className='wrapper-t'>Create from scratch</p>
-                  <div className='event-card' onClick={onFormClick}>
+                  <div
+                    className='event-card'
+                    onClick={() => {
+                      setCurrPage(2);
+                    }}
+                  >
                     <div className='card-img'>
                       {/* <img src={calender} /> */}
                       <MdLaptopMac className='event-icon' />
@@ -390,11 +432,47 @@ const EventsModal = ({
                   </div>
                 </div>
               </div>
-            ) : (
+            ) : currPage == 1 ? (
+              <>
+                <div className='container'>
+                  <IoIosArrowBack
+                    className='back-icon'
+                    onClick={() => setCurrPage(0)}
+                  />
+                  <p>Choose an Event</p>
+                  <p className='sub'>
+                    This will duplicate event details. sections, RSVP emails and
+                    RSVP questions.
+                  </p>
+                  <div className='a-wrapper' style={{ marginTop: '24px' }}>
+                    <p className='wrapper-t'>Upcoming events</p>
+                    {eventsUI}
+                    {/* <div
+                      className='event-card'
+                      onClick={() => {
+                        setCurrPage(1);
+                      }}
+                    >
+                      <div className='card-img'>
+                        
+                        <HiDuplicate
+                          className='event-icon rev'
+                          style={{ color: 'orange' }}
+                        />
+                      </div>
+                      <div className='card-content'>
+                        <p className='card-title'>AfroTech</p>
+                        <p className='card-info'>174 Attending 12PM Webinar</p>
+                      </div>
+                    </div> */}
+                  </div>
+                </div>
+              </>
+            ) : currPage == 2 ? (
               <div className='container'>
                 <IoIosArrowBack
                   className='back-icon'
-                  onClick={() => setCurrPage(1)}
+                  onClick={() => setCurrPage(0)}
                 />
                 <p>Event Details</p>
                 <div className='a-wrapper page2' onScroll={close}>
@@ -597,6 +675,8 @@ const EventsModal = ({
                   </button>
                 </div>
               </div>
+            ) : (
+              <></>
             )}
           </div>
         </Background>

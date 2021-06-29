@@ -644,7 +644,7 @@ const CompanyPage = ({}) => {
   );
 };
 
-const AdminPage = ({ event, setEvent }) => {
+const AdminPage = ({ events, setEvents, history }) => {
   const [showEventsModal, setShowEventsModal] = useState(false);
   const [showinternshipModal, setShowInternshipModal] = useState(false);
   const [left, setLeft] = useState();
@@ -691,6 +691,21 @@ const AdminPage = ({ event, setEvent }) => {
       setPage(p);
     }
   }, [pageNo]);
+  let myEventsListUI = events.map((event, index) => {
+    return (
+      <div
+        className='overview-fields'
+        onClick={() => {
+          eventSelectHandler(index);
+        }}
+      >
+        <p>{event.title}</p>
+      </div>
+    );
+  });
+  const eventSelectHandler = (id) => {
+    history.push({ pathname: '/eventpreview/' + id });
+  };
 
   return (
     <>
@@ -698,8 +713,9 @@ const AdminPage = ({ event, setEvent }) => {
         showModal={showEventsModal}
         setShowModal={setShowEventsModal}
         scrollRemove={scrollRemove}
-        eventMain={event}
-        setEventMain={setEvent}
+        eventsMain={events}
+        setEventsMain={setEvents}
+        history={history}
       />
       {/* <InternshipModal
         showModal={showinternshipModal}
@@ -737,7 +753,8 @@ const AdminPage = ({ event, setEvent }) => {
                 Create Event
               </p>
             </div>
-            <div className='overview-fields'>
+            {myEventsListUI}
+            {/* <div className='overview-fields'>
               <p>Apple conf</p>
             </div>
             <div className='overview-fields'>
@@ -745,7 +762,7 @@ const AdminPage = ({ event, setEvent }) => {
             </div>
             <div className='overview-fields'>
               <p>Google conf</p>
-            </div>
+            </div> */}
           </div>
           <div className='my-events internship'>
             <div>

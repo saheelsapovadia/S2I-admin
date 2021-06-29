@@ -5,24 +5,26 @@ import AdminPage from '../AdminPage/AdminPage';
 import PreviewPage from '../PreviewPage/PreviewPage';
 const Layout = () => {
   let history = useHistory();
-  const [event, setEvent] = useState({
-    endDate: '2021-06-21',
-    endTime: '12:00pm',
-    host: 'Zoom',
-    meetLink: '',
-    privacy: 'Public',
-    startDate: '2021-06-20',
-    startTime: '11:00pm',
-    title: 'Apple Worldwide Developer Conference',
-    zone: 'EDT',
-  });
+  const [events, setEvents] = useState([
+    {
+      endDate: '2021-06-21',
+      endTime: '12:00pm',
+      host: 'Zoom',
+      meetLink: '',
+      privacy: 'Public',
+      startDate: '2021-06-20',
+      startTime: '11:00pm',
+      title: 'Apple Worldwide Developer Conference',
+      zone: 'EDT',
+    },
+  ]);
   const adminpage = (props) => (
-    <AdminPage {...props} event={event} setEvent={setEvent} />
+    <AdminPage {...props} events={events} setEvents={setEvents} />
   );
   const previewpage = (props) => (
-    <PreviewPage {...props} event={event} setEvent={setEvent} />
+    <PreviewPage {...props} events={events} setEvents={setEvents} />
   );
-  console.log(event);
+  console.log(events);
   return (
     <>
       <BrowserRouter history={history}>
@@ -34,7 +36,7 @@ const Layout = () => {
             // component={AdminPage}
           ></Route>
           <Route
-            path='/eventpreview'
+            path='/eventpreview/:param1'
             exact
             render={(props) => previewpage(props)}
             //  component={PreviewPage}

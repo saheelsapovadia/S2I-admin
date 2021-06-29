@@ -39,7 +39,7 @@ const CoverPhoto = ({ setPageNo, photo, setPhoto }) => {
     }
   }, [photo]);
   var divb = {
-    backgroundImage: 'url(' + url + ')',
+    backgroundImage: 'url(/' + url + ')',
     backgroundSize: 'cover',
   };
 
@@ -131,6 +131,7 @@ const CoverPhoto = ({ setPageNo, photo, setPhoto }) => {
             style={{ backgroundColor: 'black', color: 'white' }}
             onClick={() => {
               setPhoto(p);
+              console.log(p);
               setChange(0);
             }}
           >
