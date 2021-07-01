@@ -5,7 +5,7 @@ import { TiTick } from 'react-icons/ti';
 import './CoverPhoto.css';
 import { p1 } from './event-photo.jpg';
 import { p2 } from './cover2.jpg';
-const CoverPhoto = ({ setPageNo, photo, setPhoto }) => {
+const CoverPhoto = ({ setPageNo, photo, setPhoto, url, setUrl }) => {
   const select = (e) => {};
   const [change, setChange] = useState(0);
   const [p, setP] = useState(0);
@@ -26,7 +26,7 @@ const CoverPhoto = ({ setPageNo, photo, setPhoto }) => {
     // console.log(p);
     setPlen(p);
   };
-  const [url, setUrl] = useState('');
+
   useEffect(() => {
     if (photo == 1) {
       setUrl('event-photo.jpg');

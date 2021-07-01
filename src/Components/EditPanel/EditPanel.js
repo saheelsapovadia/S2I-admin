@@ -14,6 +14,8 @@ const EditPanel = ({
   setPhoto,
   event,
   photo,
+  url,
+  setUrl,
   setEvent,
   speaker,
   setSpeaker,
@@ -25,6 +27,7 @@ const EditPanel = ({
   setTextBlock,
   ftJobs,
   setFtJobs,
+  saveEventChanges,
 }) => {
   const [pageNo, setPageNo] = useState(0);
   // console.log(pageNo);
@@ -32,7 +35,15 @@ const EditPanel = ({
     <div className='edit-panel'>
       {pageNo == 0 ? (
         <>
-          <button className='save'>Save and Exit</button>
+          <button
+            className='save'
+            onClick={() => {
+              saveEventChanges();
+              console.log('Saving changes...');
+            }}
+          >
+            Save and Exit
+          </button>
           <p className='t'>Edit event</p>
           <div className='details'>
             <div className='title'>
@@ -132,7 +143,13 @@ const EditPanel = ({
           </div>
         </>
       ) : pageNo == 1 ? (
-        <CoverPhoto setPageNo={setPageNo} photo={photo} setPhoto={setPhoto} />
+        <CoverPhoto
+          setPageNo={setPageNo}
+          photo={photo}
+          url={url}
+          setUrl={setUrl}
+          setPhoto={setPhoto}
+        />
       ) : pageNo == 3 ? (
         <Speakers
           setPageNo={setPageNo}

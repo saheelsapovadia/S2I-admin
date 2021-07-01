@@ -9,10 +9,11 @@ import { BsPeopleCircle, BsBookmark } from 'react-icons/bs';
 // import { FaRegBookmark } from 'react-icons/fa';
 import { TiArrowBackOutline } from 'react-icons/ti';
 import LI from './LI.png';
+import { useHistory } from 'react-router';
 const PreviewPage = ({ events, setEvents, match }) => {
   const [editPage, setEditPage] = useState(0);
   const [photo, setPhoto] = useState(4);
-  const [url, setUrl] = useState('cover4.jpg');
+  const [url, setUrl] = useState('');
   const [speakerPic, setSpeakerPic] = useState(null);
   const [speaker, setSpeaker] = useState([]);
   const [agenda, setAgenda] = useState([]);
@@ -20,38 +21,69 @@ const PreviewPage = ({ events, setEvents, match }) => {
   const [ftJobs, setFtJobs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [event, setEvent] = useState({});
+  const [divb, setDivb] = useState({});
   useEffect(() => {
     if (events.length - 1 >= match.params.param1) {
       setLoading(false);
       setEvent(events[match.params.param1]);
+      setPhoto(events[match.params.param1].photo);
+      setUrl(events[match.params.param1].url);
+      setDivb({
+        backgroundImage: 'url(/' + events[match.params.param1].url + ')',
+        backgroundSize: 'cover',
+      });
+      if (events[match.params.param1].speakers)
+        setSpeaker(events[match.params.param1].speakers);
+      if (events[match.params.param1].agendas)
+        setAgenda(events[match.params.param1].agendas);
+      if (events[match.params.param1].textBlock)
+        setTextBlock(events[match.params.param1].textBlock);
+      if (events[match.params.param1].ftJobs)
+        setFtJobs(events[match.params.param1].ftJobs);
     } else {
     }
   }, []);
-  console.log('setting ', event, events[match.params.param1]);
+  // console.log('setting ', event, events[match.params.param1]);
   // console.log(match.params.param1);
-  useEffect(() => {
-    console.log(photo);
-    if (photo == 1) {
-      setUrl('event-photo.jpg');
-    } else if (photo == 2) {
-      setUrl('cover2.jpg');
-    } else if (photo == 3) {
-      setUrl('cover3.jpg');
-    } else if (photo == 4) {
-      setUrl('cover4.jpg');
-    }
-  }, [photo]);
-  var divb = {
-    backgroundImage: 'url(/' + url + ')',
-    backgroundSize: 'cover',
+
+  // useEffect(() => {
+  //   console.log(photo);
+  //   if (photo == 1) {
+  //     setUrl('event-photo.jpg');
+  //   } else if (photo == 2) {
+  //     setUrl('cover2.jpg');
+  //   } else if (photo == 3) {
+  //     setUrl('cover3.jpg');
+  //   } else if (photo == 4) {
+  //     setUrl('cover4.jpg');
+  //   }
+  // }, [photo]);
+  const history = useHistory();
+  const saveEventChanges = () => {
+    let eventModified = {
+      ...event,
+      photo: photo,
+      url: url,
+      speakers: speaker,
+      agendas: agenda,
+      ftJobs: ftJobs,
+    };
+    setEvent(eventModified);
+    let allEvents = [...events];
+    allEvents[match.params.param1] = eventModified;
+    setEvents(allEvents);
+    console.log('Saving State...', allEvents);
+    history.push({ pathname: '/' });
   };
+
   useEffect(() => {
     console.log('url', url);
 
-    divb = {
+    let db = {
       backgroundImage: 'url(/' + url + ')',
       backgroundSize: 'cover',
     };
+    setDivb(db);
   }, [url]);
   // console.log(textBlock);
   let speakers = speaker.map((sp, index) => {
@@ -127,6 +159,8 @@ const PreviewPage = ({ events, setEvents, match }) => {
           <EditPanel
             setPhoto={setPhoto}
             photo={photo}
+            url={url}
+            setUrl={setUrl}
             event={event}
             setEvent={setEvent}
             speakerPic={speakerPic}
@@ -139,6 +173,7 @@ const PreviewPage = ({ events, setEvents, match }) => {
             setTextBlock={setTextBlock}
             ftJobs={ftJobs}
             setFtJobs={setFtJobs}
+            saveEventChanges={saveEventChanges}
           />
           <div className='preview'>
             <div className='container-pre'>

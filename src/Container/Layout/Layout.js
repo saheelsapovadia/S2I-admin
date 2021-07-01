@@ -16,6 +16,7 @@ const Layout = () => {
       startTime: '11:00pm',
       title: 'Apple Worldwide Developer Conference',
       zone: 'EDT',
+      url: 'cover2.jpg',
     },
   ]);
   const adminpage = (props) => (

@@ -82,6 +82,7 @@ export const Details = ({ setPageNo, event, setEvent }) => {
     e.meetLink = meetLink;
     e.privacy = privacy;
     setEvent(e);
+    console.log('saving edits...');
     setPageNo(0);
   };
   return (
